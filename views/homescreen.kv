@@ -1,0 +1,181 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<Label>
+    font_name: 'fonts/Poppins-Medium.ttf'
+    color: hex('#32270B')
+
+<Button>
+    background_normal: ''
+    background_down: ''
+    color: hex('#FDFDFD')
+
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    back_color: (1, 0, 1, 1)
+    border_radius: [16]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<ImageButton@ButtonBehavior+Image>
+    source: None
+
+<HomeScreen>:
+
+    user_name: user_name
+    account_name: account_name
+    account_balance: account_balance
+    time_period: time_period
+
+    canvas:
+        Color:
+            rgba: hex('#FAF5E9')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "img/background.png"
+
+        # Top float
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.5013, 0.0716
+            pos_hint: {"x": 0, "top": 0.91}
+            padding: [48, 16, 48, 16]
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [(0, 0), (24, 24), (24, 24), (0, 0)]
+
+            ImageButton:
+                source: 'img/menu_alt_05.png'
+                size_hint: (None, 1)
+                size: self.texture_size
+
+            Label:
+                id: user_name
+                text: 'Hello Andrea!'
+                text_size: self.size
+                font_size: ('18sp')
+                halign: 'left'
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.824, 0.1564
+            pos_hint: {"x": 0.2, "top": 0.8}
+            padding: [24, 16, 24, 16]
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [(24, 24), (0, 0), (0, 0), (24, 24)]
+
+            Label:
+                id: account_name
+                text: "CASH"
+                text_size: self.size
+                font_size: ('14sp')
+                font_name: 'fonts/Poppins-Bold.ttf'
+                halign: 'left'
+                size_hint: 1, 0.25
+
+            Label:
+                text: 'Balance'
+                text_size: self.size
+                font_size: ('12sp')
+                halign: 'center'
+                size_hint: 1, 0.25
+
+            Label:
+                id: account_balance
+                text: '$ 26, 600'
+                text_size: self.size
+                font_size: ('48sp')
+                font_name: 'fonts/Poppins-Bold.ttf'
+                size_hint: 1, 1
+                valign: 'top'
+                halign: 'center'
+
+        # Bottom box layout
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 1, 0.6
+            pos_hint: {"x": 0, "y": 0}
+            padding: [24, 48]
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [(48, 48), (48, 48), (0, 0), (0, 0)]
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 0.075
+                spacing: 24
+
+                RoundedButton:
+                    back_color: hex('#A0AB66')
+                    text: "Daily"
+                    font_size: ('12sp')
+
+                RoundedButton:
+                    back_color: hex('#42A495')
+                    text: "Weekly"
+                    font_size: ('12sp')
+
+                RoundedButton:
+                    back_color: hex('#DEA826')
+                    text: "Monthly"
+                    font_size: ('12sp')
+
+                RoundedButton:
+                    back_color: hex('#F26C25')
+                    text: "Yearly"
+                    font_size: ('12sp')
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 0.15
+
+                ImageButton:
+                    source: 'img/Back.png'
+                    size_hint: (0.1, 1)
+                    size: self.texture_size
+
+                Label:
+                    id: time_period
+                    text: 'SEPTEMBER 2020'
+                    size_hint: 1, 1
+                    font_size: ('14sp')
+                    font_name: 'fonts/Poppins-Bold.ttf'
+
+                ImageButton:
+                    source: 'img/Right.png'
+                    size_hint: (0.1, 1)
+                    size: self.texture_size
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 1

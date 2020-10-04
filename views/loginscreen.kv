@@ -1,0 +1,168 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<Label>
+    font_name: 'fonts/Poppins-Regular.ttf'
+    color: hex('#32270B')
+
+<Button>
+    background_normal: ''
+    background_down: ''
+    color: hex('#FDFDFD')
+
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    back_color: (1, 0, 1, 1)
+    border_radius: [16]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<ImageButton@ButtonBehavior+Image>
+    source: None
+
+<TextInput>
+    multiline: False
+    background_normal: 'Blank-White-square-thumbnail.jpg'
+    background_active: 'Blank-White-square-thumbnail.jpg'
+    font_name: "fonts/Poppins-Regular.ttf"
+    font_size: ('14sp')
+    foreground_color: hex('#32270B')
+    padding: [16, 8]
+
+
+<LoginScreen>
+
+    login_email: login_email
+    login_password: login_password
+
+    canvas:
+        Color:
+            rgba: hex('#FAF5E9')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "img/background.png"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.8, 0.6
+            pos_hint: {"x": 0, "top": 0.8}
+            padding: 72
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [0,48, 48, 0]
+
+            ImageButton:
+                source: 'img/Back.png'
+                size_hint: (None, None)
+                size: self.texture_size
+                on_press: app.change_screen('welcome_screen')
+
+            Label:
+                text: "welcome\nback"
+                font_name: 'fonts/Poppins-Bold.ttf'
+                font_size: ('36sp')
+                halign: "left"
+                line_height: 0.8
+                size_hint: 1, 0.4
+                text_size: self.size
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: [0, 72]
+                spacing: 32
+
+                BoxLayout:
+                    orientation: "vertical"
+                    padding: 12
+                    size_hint: 1, 0.75
+
+                    canvas:
+                        Color:
+                            rgba: hex('#32270B')
+                        Line:
+                            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                            width: 1.5
+
+                    TextInput:
+                        id: login_email
+                        cursor_color: hex('#32270B')
+                        hint_text: "e-mail"
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 1
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        padding: 12
+
+                        canvas:
+                            Color:
+                                rgba: hex('#32270B')
+                            Line:
+                                rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                                width: 1.5
+
+                        TextInput:
+                            id: login_password
+                            cursor_color: hex('#32270B')
+                            hint_text: "password"
+
+                    Label:
+                        text: "[ref=password]Forgot your password?[/ref]"
+                        font_size: ('10sp')
+                        markup: True
+                        on_ref_press: app.change_screen('new_log_screen')
+                        size_hint: 1, 0.4
+                        text_size: self.size
+                        halign: 'left'
+                        pos_hint: {"x": 0.05}
+
+                RoundedButton:
+                    back_color: hex('#32270B')
+                    border_radius: [32]
+                    text: "log in"
+                    font_size: ('14sp')
+                    font_name: 'fonts/Poppins-SemiBold.ttf'
+                    size_hint: 0.28, 0.75
+                    pos_hint: {'right': 1}
+                    on_press:
+                        app.auth.sign_in_with_email_and_password(email.text, password.text)
+
+            Label:
+                text: "Don't have an account?"
+                font_size: ('14sp')
+                text_size: self.size
+                halign: 'left'
+                valign: 'bottom'
+                size_hint: 1, 0.1
+
+            Label:
+                text: "[ref=register]Register[/ref]"
+                font_name: 'fonts/Poppins-Bold.ttf'
+                font_size: ('14sp')
+                size_hint: 1, 0.1
+                markup: True
+                text_size: self.size
+                halign: 'left'
+                valign: 'top'
+                on_ref_press: app.change_screen('new_log_screen')
