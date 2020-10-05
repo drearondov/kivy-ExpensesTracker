@@ -5,6 +5,21 @@
 #: include views/newlogscreen.kv
 #: include views/welcomescreen.kv
 
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    back_color: (1, 0, 1, 1)
+    border_radius: [16]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<ImageButton@ButtonBehavior+Image>
+    source: None
+
 GridLayout:
     cols: 1
 

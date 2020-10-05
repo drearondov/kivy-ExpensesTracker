@@ -15,7 +15,26 @@ class Authentication():
         self.auth = firebase.auth()
 
     def sign_in(self, email, password):
-        pass
+        try:
+            sign_in_request = self.auth.sign_in_with_email_and_password(email, password)
+
+            database = App.get_running_app().db
+            database.populate_homescreen(sign_in_request['localId'])
+
+            App.get_running_app().change_screen('home_screen')
+
+        except requests.exceptions.HTTPError as e:
+            response = e.args[0].response
+            error_response = response.json()['error']['message']
+
+            error_message = {
+                'INVALID_EMAIL': 'Please insert a valid email address.',
+                'MISSING_PASSWORD': 'Please enter your password.',
+                'EMAIL_NOT_FOUND': 'Email not registered, please sign up.',
+                'INVALID_PASSWORD': 'Wrong password.'
+            }
+
+            App.get_running_app().root.ids['login_screen'].ids['login_error'].text = error_message[error_response]
 
     def sign_up(self, username, first_name, last_name, email, password):
         try:
@@ -54,6 +73,10 @@ class DatabaseInteraction():
         }
         self.db.child('users').child(str(local_ID)).set(data)
         App.get_running_app().change_screen('home_screen')
+
+    def populate_homescreen(self, local_ID):
+        user_name = self.db.child('users').child(str(local_ID)).child('first_name').get()
+        App.get_running_app().root.ids['home_screen'].ids['user_name'].text = f'Hello {user_name.val()}!'
 
     # def create_new_account(self, local_ID, account_name, account_type):
     #     try:

@@ -9,21 +9,6 @@
     background_down: ''
     color: hex('#FDFDFD')
 
-<RoundedButton@Button>
-    background_color: (0, 0, 0, 0)
-    back_color: (1, 0, 1, 1)
-    border_radius: [16]
-    canvas.before:
-        Color:
-            rgba: self.back_color
-        RoundedRectangle:
-            size: self.size
-            pos: self.pos
-            radius: self.border_radius
-
-<ImageButton@ButtonBehavior+Image>
-    source: None
-
 <TextInput>
     multiline: False
     background_normal: 'Blank-White-square-thumbnail.jpg'
@@ -34,10 +19,11 @@
     padding: [16, 8]
 
 
-<LoginScreen>
+<LoginScreen@Screen>
 
     login_email: login_email
     login_password: login_password
+    login_error: login_error
 
     canvas:
         Color:
@@ -85,15 +71,26 @@
                 size_hint: 1, 0.4
                 text_size: self.size
 
+            Label:
+                id: login_error
+                text: ''
+                color: hex('#C7444A')
+                font_size: ('10sp')
+                size_hint: 1, 0.1
+                text_size: self.size
+                halign: 'left'
+                valign: 'bottom'
+                pos_hint: {"x": 0.05}
+
             BoxLayout:
                 orientation: "vertical"
-                padding: [0, 72]
+                padding: [0, 48, 0, 72]
                 spacing: 32
 
                 BoxLayout:
                     orientation: "vertical"
                     padding: 12
-                    size_hint: 1, 0.75
+                    size_hint: 1, 0.7
 
                     canvas:
                         Color:
@@ -139,6 +136,7 @@
 
                 RoundedButton:
                     back_color: hex('#32270B')
+                    color: hex('#FDFDFD')
                     border_radius: [32]
                     text: "log in"
                     font_size: ('14sp')
@@ -146,7 +144,7 @@
                     size_hint: 0.28, 0.75
                     pos_hint: {'right': 1}
                     on_press:
-                        app.auth.sign_in_with_email_and_password(email.text, password.text)
+                        app.auth.sign_in(login_email.text, login_password.text)
 
             Label:
                 text: "Don't have an account?"

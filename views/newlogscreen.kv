@@ -9,21 +9,6 @@
     background_down: ''
     color: hex('#FDFDFD')
 
-<RoundedButton@Button>
-    background_color: (0, 0, 0, 0)
-    back_color: (1, 0, 1, 1)
-    border_radius: [16]
-    canvas.before:
-        Color:
-            rgba: self.back_color
-        RoundedRectangle:
-            size: self.size
-            pos: self.pos
-            radius: self.border_radius
-
-<ImageButton@ButtonBehavior+Image>
-    source: None
-
 <TextInput>
     multiline: False
     background_normal: 'Blank-White-square-thumbnail.jpg'
@@ -34,7 +19,7 @@
     padding: [16, 8]
 
 
-<NewLogScreen>
+<NewLogScreen@Screen>
 
     sign_up_username: sign_up_username
     sign_up_first_name: sign_up_first_name
@@ -189,14 +174,15 @@
                     text: ''
                     color: hex('#C7444A')
                     font_size: ('10sp')
-                    size_hint: 1, 0.3
+                    size_hint: 1, 0.4
                     text_size: self.size
                     halign: 'left'
-                    valign: 'bottom'
+                    valign: 'top'
                     pos_hint: {"x": 0.05}
 
             RoundedButton:
                 back_color: hex('#32270B')
+                color: hex('#FDFDFD')
                 border_radius: [32]
                 text: "sign up"
                 font_size: ('14sp')

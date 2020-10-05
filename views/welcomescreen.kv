@@ -1,4 +1,79 @@
-<WelcomeScreen>:
-    Button:
-        text: "You are in the Welcome screen"
-        on_press: app.change_screen('login_screen')
+#:import hex kivy.utils.get_color_from_hex
+
+<Label>
+    font_name: 'fonts/Poppins-Medium.ttf'
+    color: hex('#32270B')
+
+<WelcomeScreen@Screen>:
+    
+    canvas:
+        Color:
+            rgba: hex('#FAF5E9')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "img/background.png"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.8, 0.6
+            pos_hint: {"x": 0, "top": 0.8}
+            padding: [48, 48, 24, 48]
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [0,48, 48, 0]
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint: 1, 1
+
+                Label:
+                    text: "Seneca's wallet"
+                    text_size: self.size
+                    font_size: ('48sp')
+                    font_name: 'fonts/Poppins-ExtraBold.ttf'
+                    size_hint: 1, 1
+                    valign: 'top'
+                    halign: 'left'
+                    line_height: 0.8
+
+                ImageButton:
+                    source: 'img/RIght.png'
+                    size_hint: None, None
+                    size: self.texture_size
+                    pos_hint: {'top': 0.98}
+                    on_press: app.change_screen('login_screen')
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 1, 0.3
+
+                Label:
+                    text: 'It is not the man who has\ntoo little, but the man who\ncraves more, that is poor.'
+                    text_size: self.size
+                    font_size: ('16sp')
+                    halign: 'left'
+                    line_height: 0.8
+
+                Label:
+                    text: 'Seneca'
+                    font_name: 'fonts/Poppins-Regular.ttf'
+                    text_size: self.size
+                    font_size: ('14sp')
+                    halign: 'left'
+                    line_height: 0.8
+                    size_hint: 1, 0.25
