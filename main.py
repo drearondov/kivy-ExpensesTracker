@@ -1,4 +1,6 @@
 import os
+
+from pyrebase.pyrebase import Database
 os.environ['KIVY_IMAGE'] = 'sdl2'
 
 import kivy
@@ -12,7 +14,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 
-from firebase import Authentication
+from firebase import Authentication, DatabaseInteraction
 
 
 class WelcomeScreen(Screen):
@@ -34,6 +36,7 @@ class MainApp(App):
     
     def build(self):
         self.auth = Authentication()
+        self.db = DatabaseInteraction()
 
         return GUI
 

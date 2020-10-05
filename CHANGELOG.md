@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Authentication system
 - Scrolling view on homescreen
 
-## [0.1.0dev]
+## [0.1.0dev] (3/10/2020)
 
 ### Added
 

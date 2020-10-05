@@ -29,7 +29,7 @@
     background_normal: 'Blank-White-square-thumbnail.jpg'
     background_active: 'Blank-White-square-thumbnail.jpg'
     font_name: "fonts/Poppins-Regular.ttf"
-    font_size: ('14sp')
+    font_size: ('12sp')
     foreground_color: hex('#32270B')
     padding: [16, 8]
 
@@ -41,6 +41,7 @@
     sign_up_last_name: sign_up_last_name
     sign_up_email: sign_up_email
     sign_up_password: sign_up_password
+    sign_up_error: sign_up_error
 
     canvas:
         Color:
@@ -77,7 +78,7 @@
                 source: 'img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
-                on_press: app.change_screen('welcome_screen')
+                on_press: app.change_screen('login_screen')
 
             Label:
                 text: "create\naccount"
@@ -90,8 +91,8 @@
 
             BoxLayout:
                 orientation: "vertical"
-                padding: [0, 48]
-                spacing: 32
+                padding : [0, 48, 0, 0]
+                spacing: 24
                 size_hint: 1, 1
 
                 BoxLayout:
@@ -102,7 +103,8 @@
                         Color:
                             rgba: hex('#32270B')
                         Line:
-                            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                            rounded_rectangle:
+                                (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
                             width: 1.5
 
                     TextInput:
@@ -122,7 +124,8 @@
                             Color:
                                 rgba: hex('#32270B')
                             Line:
-                                rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                                rounded_rectangle:
+                                    (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
                                 width: 1.5
 
                         TextInput:
@@ -138,7 +141,8 @@
                             Color:
                                 rgba: hex('#32270B')
                             Line:
-                                rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                                rounded_rectangle:
+                                    (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
                                 width: 1.5
 
                         TextInput:
@@ -154,7 +158,8 @@
                         Color:
                             rgba: hex('#32270B')
                         Line:
-                            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                            rounded_rectangle:
+                                (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
                             width: 1.5
 
                     TextInput:
@@ -170,13 +175,25 @@
                         Color:
                             rgba: hex('#32270B')
                         Line:
-                            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+                            rounded_rectangle:
+                                (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
                             width: 1.5
 
                     TextInput:
                         id: sign_up_password
                         cursor_color: hex('#32270B')
                         hint_text: "password"
+
+                Label:
+                    id: sign_up_error
+                    text: ''
+                    color: hex('#C7444A')
+                    font_size: ('10sp')
+                    size_hint: 1, 0.3
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'bottom'
+                    pos_hint: {"x": 0.05}
 
             RoundedButton:
                 back_color: hex('#32270B')
@@ -186,5 +203,5 @@
                 font_name: 'fonts/Poppins-SemiBold.ttf'
                 size_hint: 0.32, 0.15
                 pos_hint: {'right': 1}
-                on_press: app.auth.sign_up(sign_up_email.text, sign_up_password.text)
-
+                on_press:
+                    app.auth.sign_up(sign_up_username.text, sign_up_first_name.text, sign_up_last_name.text, sign_up_email.text, sign_up_password.text)
