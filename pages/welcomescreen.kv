@@ -2,18 +2,10 @@
 
 <Label>
     font_name: 'fonts/Poppins-Medium.ttf'
-    color: hex('#32270B')
+    color: hex('#2E3C42')
 
 <WelcomeScreen@Screen>:
     
-    canvas:
-        Color:
-            rgba: hex('#FAF5E9')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-
-
     FloatLayout:
         size: root.width, root.height
 
@@ -31,7 +23,7 @@
 
             canvas:
                 Color:
-                    rgba: hex('#FDFDFD')
+                    rgba: hex('#FFFFFF')
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -45,7 +37,7 @@
                     text: "Seneca's wallet"
                     text_size: self.size
                     font_size: ('48sp')
-                    font_name: 'fonts/Poppins-ExtraBold.ttf'
+                    font_name: 'fonts/Anton-Regular.ttf'
                     size_hint: 1, 1
                     valign: 'top'
                     halign: 'left'

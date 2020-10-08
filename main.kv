@@ -1,9 +1,9 @@
 #: kivy 1.11.1
 
-#: include views/homescreen.kv
-#: include views/loginscreen.kv
-#: include views/newlogscreen.kv
-#: include views/welcomescreen.kv
+#: include pages/homescreen.kv
+#: include pages/loginscreen.kv
+#: include pages/newlogscreen.kv
+#: include pages/welcomescreen.kv
 
 <RoundedButton@Button>
     background_color: (0, 0, 0, 0)
@@ -17,8 +17,28 @@
             pos: self.pos
             radius: self.border_radius
 
+<BorderedButton@Button>
+    canvas:
+        Color:
+            rgba: hex('#C0E1DD')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+            width: 1.5
+
 <ImageButton@ButtonBehavior+Image>
     source: None
+
+<InputField@BoxLayout>
+    orientation: "vertical"
+    padding: 12
+
+    canvas:
+        Color:
+            rgba: hex('#32270B')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+            width: 1.5
+
 
 GridLayout:
     cols: 1

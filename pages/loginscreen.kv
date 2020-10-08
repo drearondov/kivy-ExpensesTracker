@@ -2,12 +2,12 @@
 
 <Label>
     font_name: 'fonts/Poppins-Regular.ttf'
-    color: hex('#32270B')
+    color: hex('#2E3C42')
 
 <Button>
     background_normal: ''
     background_down: ''
-    color: hex('#FDFDFD')
+    color: hex('#FFFFFF')
 
 <TextInput>
     multiline: False
@@ -15,7 +15,7 @@
     background_active: 'Blank-White-square-thumbnail.jpg'
     font_name: "fonts/Poppins-Regular.ttf"
     font_size: ('12sp')
-    foreground_color: hex('#32270B')
+    foreground_color: hex('#2E3C42')
     padding: [16, 8]
 
 
@@ -24,13 +24,6 @@
     login_email: login_email
     login_password: login_password
     login_error: login_error
-
-    canvas:
-        Color:
-            rgba: hex('#FAF5E9')
-        Rectangle:
-            size: self.size
-            pos: self.pos
 
 
     FloatLayout:
@@ -50,7 +43,7 @@
 
             canvas:
                 Color:
-                    rgba: hex('#FDFDFD')
+                    rgba: hex('#FFFFFF')
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -64,11 +57,11 @@
 
             Label:
                 text: "welcome\nback"
-                font_name: 'fonts/Poppins-Bold.ttf'
+                font_name: 'fonts/Anton-Regular.ttf'
                 font_size: ('36sp')
                 halign: "left"
                 line_height: 0.8
-                size_hint: 1, 0.4
+                size_hint: 1, 0.45
                 text_size: self.size
 
             Label:
@@ -87,41 +80,21 @@
                 padding: [0, 48, 0, 72]
                 spacing: 32
 
-                BoxLayout:
-                    orientation: "vertical"
-                    padding: 12
+                InputField:
                     size_hint: 1, 0.7
-
-                    canvas:
-                        Color:
-                            rgba: hex('#32270B')
-                        Line:
-                            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
-                            width: 1.5
-
                     TextInput:
                         id: login_email
-                        cursor_color: hex('#32270B')
+                        cursor_color: hex('#2E3C42')
                         hint_text: "e-mail"
 
                 BoxLayout:
                     orientation: "vertical"
                     size_hint: 1, 1
 
-                    BoxLayout:
-                        orientation: "vertical"
-                        padding: 12
-
-                        canvas:
-                            Color:
-                                rgba: hex('#32270B')
-                            Line:
-                                rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
-                                width: 1.5
-
+                    InputField:
                         TextInput:
                             id: login_password
-                            cursor_color: hex('#32270B')
+                            cursor_color: hex('#2E3C42')
                             hint_text: "password"
 
                     Label:
@@ -135,12 +108,12 @@
                         pos_hint: {"x": 0.05}
 
                 RoundedButton:
-                    back_color: hex('#32270B')
+                    back_color: hex('#2E3C42')
                     color: hex('#FDFDFD')
                     border_radius: [32]
                     text: "log in"
                     font_size: ('14sp')
-                    font_name: 'fonts/Poppins-SemiBold.ttf'
+                    font_name: 'fonts/Anton-Regular.ttf'
                     size_hint: 0.28, 0.75
                     pos_hint: {'right': 1}
                     on_press:

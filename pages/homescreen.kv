@@ -12,16 +12,7 @@
 <HomeScreen@Screen>:
 
     user_name: user_name
-    account_name: account_name
-    account_balance: account_balance
     time_period: time_period
-
-    canvas:
-        Color:
-            rgba: hex('#FAF5E9')
-        Rectangle:
-            size: self.size
-            pos: self.pos
 
 
     FloatLayout:
@@ -60,46 +51,6 @@
                 font_size: ('18sp')
                 halign: 'left'
 
-        BoxLayout:
-            orientation: "vertical"
-            size_hint: 0.824, 0.1564
-            pos_hint: {"x": 0.2, "top": 0.8}
-            padding: [24, 16, 24, 16]
-
-            canvas:
-                Color:
-                    rgba: hex('#FDFDFD')
-                RoundedRectangle:
-                    size: self.size
-                    pos: self.pos
-                    radius: [(24, 24), (0, 0), (0, 0), (24, 24)]
-
-            Label:
-                id: account_name
-                text: "CASH"
-                text_size: self.size
-                font_size: ('14sp')
-                font_name: 'fonts/Poppins-Bold.ttf'
-                halign: 'left'
-                size_hint: 1, 0.25
-
-            Label:
-                text: 'Balance'
-                text_size: self.size
-                font_size: ('12sp')
-                halign: 'center'
-                size_hint: 1, 0.25
-
-            Label:
-                id: account_balance
-                text: '$ 26, 600'
-                text_size: self.size
-                font_size: ('48sp')
-                font_name: 'fonts/Poppins-Bold.ttf'
-                size_hint: 1, 1
-                valign: 'top'
-                halign: 'center'
-
         # Bottom box layout
         BoxLayout:
             orientation: "vertical"
@@ -117,32 +68,23 @@
 
             BoxLayout:
                 orientation: "horizontal"
-                size_hint: 1, 0.075
+                size_hint: 1, 0.095
                 spacing: 24
+                padding: [16, 0]
 
-                RoundedButton:
-                    back_color: hex('#A0AB66')
-                    text: "Daily"
-                    color: hex('#FDFDFD')
-                    font_size: ('12sp')
+                Label:
+                    text: 'ACTIVITY'
+                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_size: ('24sp')
+                    text_size: self.size
+                    halign: 'left'
 
-                RoundedButton:
-                    back_color: hex('#42A495')
-                    text: "Weekly"
-                    color: hex('#FDFDFD')
-                    font_size: ('12sp')
-
-                RoundedButton:
-                    back_color: hex('#DEA826')
-                    text: "Monthly"
-                    color: hex('#FDFDFD')
-                    font_size: ('12sp')
-
-                RoundedButton:
-                    back_color: hex('#F26C25')
-                    text: "Yearly"
-                    color: hex('#FDFDFD')
-                    font_size: ('12sp')
+                BorderedButton:
+                    text: 'history'
+                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_size: ('14sp')
+                    size_hint: 0.3, 1
+                    color: hex('#C0E1DD')
 
             BoxLayout:
                 orientation: "horizontal"
