@@ -19,7 +19,7 @@ class Authentication():
             sign_in_request = self.auth.sign_in_with_email_and_password(email, password)
 
             database = App.get_running_app().db
-            database.populate_homescreen(sign_in_request['localId'])
+            database.get_users_data(sign_in_request['localId'])
 
             App.get_running_app().change_screen('home_screen')
 
@@ -74,16 +74,15 @@ class DatabaseInteraction():
         self.db.child('users').child(str(local_ID)).set(data)
         App.get_running_app().change_screen('home_screen')
 
-    def populate_homescreen(self, local_ID):
+    def get_users_data(self, local_ID):
         user_name = self.db.child('users').child(str(local_ID)).child('first_name').get()
         App.get_running_app().root.ids['home_screen'].ids['user_name'].text = f'Hello {user_name.val()}!'
 
-    # def create_new_account(self, local_ID, account_name, account_type):
-    #     try:
-    #         accounts = self.db.child(local_ID).child('accounts').get()
-    #         last_account = accounts.each()[-1]
-    #         last_account.key()
-            #self.db.child('users').child(token_ID).child('accounts').child(f'account_{account_counter}')
+    def get_user_accounts(self, local_ID):
+        accounts = self.db.child('users').child(str(local_ID)).child('accounts').get()
+        return accounts
 
-    # def create_new_transaction(self, ammount, date, description, main_category, sub_category, transaction_type):
-    #     pass
+if __name__ == "__main__":
+    db = DatabaseInteraction()
+    accounts = db.get_user_accounts('9nKKe68S1LNHx0ZtK3JTXTJN1X83')
+    print(accounts.val())

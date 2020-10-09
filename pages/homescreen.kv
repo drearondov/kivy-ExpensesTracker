@@ -1,7 +1,7 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'fonts/Poppins-Medium.ttf'
+    font_name: 'fonts/Poppins-Regular.ttf'
     color: hex('#32270B')
 
 <Button>
@@ -12,7 +12,7 @@
 <HomeScreen@Screen>:
 
     user_name: user_name
-    time_period: time_period
+    accounts_slider: accounts_slider
 
 
     FloatLayout:
@@ -50,6 +50,32 @@
                 text_size: self.size
                 font_size: ('18sp')
                 halign: 'left'
+
+        # Middle slider
+        BoxLayout:
+            pos_hint: {'top': 0.82}
+            size_hint: 1, 0.18
+
+            ScrollView:
+                do_scroll_x: True
+                do_scroll_y: False
+
+                GridLayout:
+                    id: accounts_slider
+                    size_hint_x: None
+                    rows: 1
+                    col_default_width: root.width * 0.3
+                    width: self.minimum_width
+                    spacing: 36
+                    padding: [36, 0]
+
+                    Card:
+
+                    Card:
+
+                    Card:
+
+                    Card:
 
         # Bottom box layout
         BoxLayout:

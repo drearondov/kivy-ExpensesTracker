@@ -53,7 +53,7 @@
                 source: 'img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
-                on_press: app.change_screen('welcome_screen')
+                on_press: root.manager.current = 'welcome_screen'
 
             Label:
                 text: "welcome\nback"
@@ -101,7 +101,7 @@
                         text: "[ref=password]Forgot your password?[/ref]"
                         font_size: ('10sp')
                         markup: True
-                        on_ref_press: app.change_screen('new_log_screen')
+                        on_ref_press: root.manager.current = 'new_log_screen'
                         size_hint: 1, 0.4
                         text_size: self.size
                         halign: 'left'
@@ -136,4 +136,4 @@
                 text_size: self.size
                 halign: 'left'
                 valign: 'top'
-                on_ref_press: app.change_screen('new_log_screen')
+                on_ref_press: root.manager.current = 'new_log_screen'

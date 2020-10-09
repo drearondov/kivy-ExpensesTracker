@@ -1,0 +1,68 @@
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    back_color: (1, 0, 1, 1)
+    border_radius: [16]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<BorderedButton@Button>
+    canvas:
+        Color:
+            rgba: hex('#C0E1DD')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+            width: 1.5
+
+<ImageButton@ButtonBehavior+Image>
+    source: None
+
+<InputField@BoxLayout>
+    orientation: "vertical"
+    padding: 12
+
+    canvas:
+        Color:
+            rgba: hex('#32270B')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+            width: 1.5
+
+<Card@BoxLayout+ButtonBehavior>
+    orientation: "vertical"
+    padding: [24, 16]
+
+    canvas:
+        Color:
+            rgba: hex('#FFFFFF')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [36]
+
+    Label:
+        text: 'CASH'
+        font_name: 'fonts/Anton-Regular.ttf'
+        font_size: ('14sp')
+        text_size: self.size
+        halign: 'left'
+        size_hint: 1, 0.24
+
+    Image:
+        source: 'img/cash.png'
+        size_hint: None, None
+        pos_hint: {'x': 0}
+        size: self.texture_size
+
+    Label:
+        text: '$ 26 000'
+        font_size: ('20sp')
+        font_name: 'fonts/Poppins-Regular.ttf'
+        text_size: self.size
+        halign: 'right'
+        valign: 'bottom'
+        size_hint: 1, 1

@@ -56,7 +56,7 @@
                 source: 'img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
-                on_press: app.change_screen('login_screen')
+                on_press: root.manager.current = 'login_screen'
 
             Label:
                 text: "create\naccount"
