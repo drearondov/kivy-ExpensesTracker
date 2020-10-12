@@ -14,8 +14,8 @@ class Authentication():
     def login(self, email, password):
         try:
             sign_in_request = self.auth.sign_in_with_email_and_password(email, password)
-
-            return True, sign_in_request
+            localID = sign_in_request['localId']
+            return True, localID
 
         except requests.exceptions.HTTPError as e:
             response = e.args[0].response

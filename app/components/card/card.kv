@@ -1,0 +1,45 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<Card>
+
+    card_title: card_title
+    card_image: card_image
+    card_text: card_text
+
+    orientation: "vertical"
+    padding: [24, 24]
+    spacing: 8
+
+    canvas:
+        Color:
+            rgba: hex('#FFFFFF')
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [36]
+
+    Label:
+        id: card_title
+        text: 'CASH'
+        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_size: ('14sp')
+        text_size: self.size
+        halign: 'left'
+        size_hint: 1, 0.24
+
+    Image:
+        id: card_image
+        source: 'assets/img/cash.png'
+        size_hint: None, None
+        pos_hint: {'x': 0}
+        size: self.texture_size
+
+    Label:
+        id: card_text
+        text: '$ 26 000'
+        font_size: ('20sp')
+        font_name: 'assets/fonts/Poppins-Regular.ttf'
+        text_size: self.size
+        halign: 'right'
+        valign: 'bottom'
+        size_hint: 1, 1

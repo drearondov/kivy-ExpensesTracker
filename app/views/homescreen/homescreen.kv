@@ -9,10 +9,12 @@
     background_down: ''
     color: hex('#FDFDFD')
 
-<HomeScreen@Screen>:
+<HomeScreen>:
 
     user_name: user_name
     accounts_slider: accounts_slider
+    today: today
+    time_period: time_period
 
 
     FloatLayout:
@@ -39,10 +41,13 @@
                     pos: self.pos
                     radius: [(0, 0), (24, 24), (24, 24), (0, 0)]
 
-            ImageButton:
-                source: 'assets/img/menu_alt_05.png'
-                size_hint: (None, 1)
-                size: self.texture_size
+            Label:
+                id: today
+                text: ''
+                font_name: 'assets/fonts/Poppins-Regular.ttf'
+                text_size: self.size
+                font_size: ('10sp')
+                halign: 'left'
 
             Label:
                 id: user_name
@@ -50,6 +55,23 @@
                 text_size: self.size
                 font_size: ('18sp')
                 halign: 'left'
+
+        BoxLayout:
+            size_hint: 0.15, 0.08
+            pos_hint: {"right": 1, "top": 0.93}
+
+            canvas:
+                Color:
+                    rgba: hex('#FDFDFD')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [(24,24), (0, 0), (0, 0), (24, 24)]
+
+            ImageButton:
+                source: 'assets/img/settings.png'
+                size: self.texture_size
+
 
         # Middle slider
         BoxLayout:
@@ -64,18 +86,11 @@
                     id: accounts_slider
                     size_hint_x: None
                     rows: 1
-                    col_default_width: root.width * 0.3
+                    col_default_width: root.width * 0.32
                     width: self.minimum_width
                     spacing: 36
                     padding: [36, 0]
 
-                    Card:
-
-                    Card:
-
-                    Card:
-
-                    Card:
 
         # Bottom box layout
         BoxLayout:
@@ -123,7 +138,7 @@
 
                 Label:
                     id: time_period
-                    text: 'SEPTEMBER 2020'
+                    text: ''
                     size_hint: 1, 1
                     font_size: ('14sp')
                     font_name: 'assets/fonts/Poppins-Bold.ttf'

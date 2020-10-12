@@ -1,0 +1,33 @@
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    back_color: (1, 0, 1, 1)
+    border_radius: [16]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<BorderedButton@Button>
+    canvas:
+        Color:
+            rgba: hex('#C0E1DD')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 24, 100)
+            width: 1.5
+
+<ImageButton@ButtonBehavior+Image>
+    source: None
+
+<InputField@BoxLayout>
+    orientation: "vertical"
+    padding: 12
+
+    canvas:
+        Color:
+            rgba: hex('#2E3C42')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
+            width: 1.5

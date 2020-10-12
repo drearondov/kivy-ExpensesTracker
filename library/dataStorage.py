@@ -25,7 +25,7 @@ class DatabaseInteraction():
 
     def get_users_data(self, local_ID):
         user_name = self.db.child('users').child(str(local_ID)).child('first_name').get()
-        App.get_running_app().root.ids['home_screen'].ids['user_name'].text = f'Hello {user_name.val()}!'
+        return user_name.val()
 
     def get_user_accounts(self, local_ID):
         accounts = self.db.child('users').child(str(local_ID)).child('accounts').get()

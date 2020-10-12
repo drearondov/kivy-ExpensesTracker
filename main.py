@@ -10,8 +10,8 @@ Config.set('graphics', 'height', '812')
 
 from kivy.app import App
 
-from views.welcomescreen.welcomescreen import WelcomeScreen
-from views.loginscreen.loginscreen import LoginScreen
+from app.views.welcomescreen.welcomescreen import WelcomeScreen
+from app.views.loginscreen.loginscreen import LoginScreen
 
 
 class MainApp(App):
