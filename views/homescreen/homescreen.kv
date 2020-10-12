@@ -1,7 +1,7 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'fonts/Poppins-Regular.ttf'
+    font_name: 'assets/fonts/Poppins-Regular.ttf'
     color: hex('#32270B')
 
 <Button>
@@ -22,7 +22,7 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "img/background.png"
+                source: "assets/img/background.png"
 
         # Top float
         BoxLayout:
@@ -40,7 +40,7 @@
                     radius: [(0, 0), (24, 24), (24, 24), (0, 0)]
 
             ImageButton:
-                source: 'img/menu_alt_05.png'
+                source: 'assets/img/menu_alt_05.png'
                 size_hint: (None, 1)
                 size: self.texture_size
 
@@ -100,14 +100,14 @@
 
                 Label:
                     text: 'ACTIVITY'
-                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/Anton-Regular.ttf'
                     font_size: ('24sp')
                     text_size: self.size
                     halign: 'left'
 
                 BorderedButton:
                     text: 'history'
-                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/Anton-Regular.ttf'
                     font_size: ('14sp')
                     size_hint: 0.3, 1
                     color: hex('#C0E1DD')
@@ -117,7 +117,7 @@
                 size_hint: 1, 0.15
 
                 ImageButton:
-                    source: 'img/Back.png'
+                    source: 'assets/img/Back.png'
                     size_hint: (0.1, 1)
                     size: self.texture_size
 
@@ -126,10 +126,10 @@
                     text: 'SEPTEMBER 2020'
                     size_hint: 1, 1
                     font_size: ('14sp')
-                    font_name: 'fonts/Poppins-Bold.ttf'
+                    font_name: 'assets/fonts/Poppins-Bold.ttf'
 
                 ImageButton:
-                    source: 'img/Right.png'
+                    source: 'assets/img/Right.png'
                     size_hint: (0.1, 1)
                     size: self.texture_size
 

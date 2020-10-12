@@ -1,10 +1,10 @@
 #: kivy 1.11.1
 
-#: include pages/homescreen.kv
-#: include pages/loginscreen.kv
-#: include pages/newlogscreen.kv
-#: include pages/welcomescreen.kv
-#: include widgets.kv
+#: include views/homescreen/homescreen.kv
+#: include views/loginscreen/loginscreen.kv
+#: include views/signupscreen/signupscreen.kv
+#: include views/welcomescreen/welcomescreen.kv
+#: include views/widgets.kv
 
 
 ScreenManager:
@@ -19,5 +19,5 @@ ScreenManager:
         name: "home_screen"
         id: home_screen
     NewLogScreen:
-        name: "new_log_screen"
-        id: new_log_screen
+        name: "signup_screen"
+        id: signup_screen

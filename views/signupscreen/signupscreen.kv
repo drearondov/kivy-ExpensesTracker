@@ -1,7 +1,7 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'fonts/Poppins-Regular.ttf'
+    font_name: 'assets/fonts/Poppins-Regular.ttf'
     color: hex('#32270B')
 
 <Button>
@@ -11,9 +11,9 @@
 
 <TextInput>
     multiline: False
-    background_normal: 'Blank-White-square-thumbnail.jpg'
-    background_active: 'Blank-White-square-thumbnail.jpg'
-    font_name: "fonts/Poppins-Regular.ttf"
+    background_normal: 'assets/img/white_square.jpg'
+    background_active: 'assets/img/white_square.jpg'
+    font_name: "assets/fonts/Poppins-Regular.ttf"
     font_size: ('12sp')
     foreground_color: hex('#32270B')
     padding: [16, 8]
@@ -21,12 +21,12 @@
 
 <NewLogScreen@Screen>
 
-    sign_up_username: sign_up_username
-    sign_up_first_name: sign_up_first_name
-    sign_up_last_name: sign_up_last_name
-    sign_up_email: sign_up_email
-    sign_up_password: sign_up_password
-    sign_up_error: sign_up_error
+    username: username
+    first_name: first_name
+    last_name: last_name
+    email: email
+    password: password
+    error: error
 
 
     FloatLayout:
@@ -36,7 +36,7 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "img/background.png"
+                source: "assets/img/background.png"
 
         BoxLayout:
             orientation: "vertical"
@@ -53,14 +53,14 @@
                     radius: [0,48, 48, 0]
 
             ImageButton:
-                source: 'img/Back.png'
+                source: 'assets/img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
                 on_press: root.manager.current = 'login_screen'
 
             Label:
                 text: "create\naccount"
-                font_name: 'fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/Anton-Regular.ttf'
                 font_size: ('36sp')
                 halign: "left"
                 line_height: 0.8
@@ -75,7 +75,7 @@
 
                 InputField:
                     TextInput:
-                        id: sign_up_username
+                        id: username
                         cursor_color: hex('#32270B')
                         hint_text: "username"
 
@@ -86,30 +86,30 @@
 
                     InputField:
                         TextInput:
-                            id: sign_up_first_name
+                            id: first_name
                             cursor_color: hex('#32270B')
                             hint_text: "first name"
 
                     InputField:
                         TextInput:
-                            id: sign_up_last_name
+                            id: last_name
                             cursor_color: hex('#32270B')
                             hint_text: "last name"
 
                 InputField:
                     TextInput:
-                        id: sign_up_email
+                        id: email
                         cursor_color: hex('#32270B')
                         hint_text: "email"
 
                 InputField:
                     TextInput:
-                        id: sign_up_password
+                        id: password
                         cursor_color: hex('#32270B')
                         hint_text: "password"
 
                 Label:
-                    id: sign_up_error
+                    id: error
                     text: ''
                     color: hex('#C7444A')
                     font_size: ('10sp')
@@ -125,8 +125,8 @@
                 border_radius: [32]
                 text: "sign up"
                 font_size: ('14sp')
-                font_name: 'fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/Anton-Regular.ttf'
                 size_hint: 0.32, 0.15
                 pos_hint: {'right': 1}
                 on_press:
-                    app.auth.sign_up(sign_up_username.text, sign_up_first_name.text, sign_up_last_name.text, sign_up_email.text, sign_up_password.text)
+                    root.sign_up(username.text, first_name.text, last_name.text, email.text, password.text)

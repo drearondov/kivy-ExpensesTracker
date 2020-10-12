@@ -1,7 +1,7 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'fonts/Poppins-Regular.ttf'
+    font_name: 'assets/fonts/Poppins-Regular.ttf'
     color: hex('#2E3C42')
 
 <Button>
@@ -11,15 +11,15 @@
 
 <TextInput>
     multiline: False
-    background_normal: 'Blank-White-square-thumbnail.jpg'
-    background_active: 'Blank-White-square-thumbnail.jpg'
-    font_name: "fonts/Poppins-Regular.ttf"
+    background_normal: 'assets/img/white_square.jpg'
+    background_active: 'assets/img/white_square.jpg'
+    font_name: "assets/fonts/Poppins-Regular.ttf"
     font_size: ('12sp')
     foreground_color: hex('#2E3C42')
     padding: [16, 8]
 
 
-<LoginScreen@Screen>
+<LoginScreen>
 
     login_email: login_email
     login_password: login_password
@@ -33,7 +33,7 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "img/background.png"
+                source: "assets/img/background.png"
 
         BoxLayout:
             orientation: "vertical"
@@ -50,14 +50,14 @@
                     radius: [0,48, 48, 0]
 
             ImageButton:
-                source: 'img/Back.png'
+                source: 'assets/img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
                 on_press: root.manager.current = 'welcome_screen'
 
             Label:
                 text: "welcome\nback"
-                font_name: 'fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/Anton-Regular.ttf'
                 font_size: ('36sp')
                 halign: "left"
                 line_height: 0.8
@@ -101,7 +101,7 @@
                         text: "[ref=password]Forgot your password?[/ref]"
                         font_size: ('10sp')
                         markup: True
-                        on_ref_press: root.manager.current = 'new_log_screen'
+                        on_ref_press: root.manager.current = 'signup_screen'
                         size_hint: 1, 0.4
                         text_size: self.size
                         halign: 'left'
@@ -113,11 +113,11 @@
                     border_radius: [32]
                     text: "log in"
                     font_size: ('14sp')
-                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/Anton-Regular.ttf'
                     size_hint: 0.28, 0.75
                     pos_hint: {'right': 1}
                     on_press:
-                        app.auth.sign_in(login_email.text, login_password.text)
+                        root.login(login_email.text, login_password.text)
 
             Label:
                 text: "Don't have an account?"
@@ -129,11 +129,11 @@
 
             Label:
                 text: "[ref=register]Register[/ref]"
-                font_name: 'fonts/Poppins-Bold.ttf'
+                font_name: 'assets/fonts/Poppins-Bold.ttf'
                 font_size: ('14sp')
                 size_hint: 1, 0.1
                 markup: True
                 text_size: self.size
                 halign: 'left'
                 valign: 'top'
-                on_ref_press: root.manager.current = 'new_log_screen'
+                on_ref_press: root.manager.current = 'signup_screen'

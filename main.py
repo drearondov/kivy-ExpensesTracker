@@ -10,16 +10,15 @@ Config.set('graphics', 'height', '812')
 
 from kivy.app import App
 
-from firebase import Authentication, DatabaseInteraction
+from views.welcomescreen.welcomescreen import WelcomeScreen
+from views.loginscreen.loginscreen import LoginScreen
 
 
 class MainApp(App):
-    auth = Authentication()
-    db = DatabaseInteraction()
+    title = "Seneca's Wallet"
 
-    def change_screen(self, screen_name):
-        screen_manager = self.root.ids['screen_manager']
-        screen_manager.current = screen_name
+    welcomeScreen = WelcomeScreen()
+    loginScreen = LoginScreen()
 
 
 if __name__ == "__main__":

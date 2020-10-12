@@ -1,11 +1,11 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'fonts/Poppins-Medium.ttf'
+    font_name: 'assets/fonts/Poppins-Medium.ttf'
     color: hex('#2E3C42')
 
-<WelcomeScreen@Screen>:
-    
+<WelcomeScreen>:
+
     FloatLayout:
         size: root.width, root.height
 
@@ -13,7 +13,7 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "img/background.png"
+                source: "assets/img/background.png"
 
         BoxLayout:
             orientation: "vertical"
@@ -37,14 +37,14 @@
                     text: "Seneca's wallet"
                     text_size: self.size
                     font_size: ('48sp')
-                    font_name: 'fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/Anton-Regular.ttf'
                     size_hint: 1, 1
                     valign: 'top'
                     halign: 'left'
                     line_height: 0.8
 
                 ImageButton:
-                    source: 'img/RIght.png'
+                    source: 'assets/img/RIght.png'
                     size_hint: None, None
                     size: self.texture_size
                     pos_hint: {'top': 0.98}
@@ -55,7 +55,8 @@
                 size_hint: 1, 0.3
 
                 Label:
-                    text: 'It is not the man who has\ntoo little, but the man who\ncraves more, that is poor.'
+                    text:
+                        'It is not the man who has\ntoo little, but the man who\ncraves more, that is poor.'
                     text_size: self.size
                     font_size: ('16sp')
                     halign: 'left'
@@ -63,7 +64,7 @@
 
                 Label:
                     text: 'Seneca'
-                    font_name: 'fonts/Poppins-Regular.ttf'
+                    font_name: 'assets/fonts/Poppins-Regular.ttf'
                     text_size: self.size
                     font_size: ('14sp')
                     halign: 'left'
