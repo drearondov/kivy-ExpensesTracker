@@ -151,3 +151,16 @@
             BoxLayout:
                 orientation: "vertical"
                 size_hint: 1, 1
+
+                ScrollView:
+                    do_scroll_y: True
+                    do_scroll_x: False
+
+                    GridLayout:
+                        id: transaction_slider
+                        size_hint_y: None
+                        cols: 1
+                        row_default_width: root.height * 0.4
+                        height: self.minimum_width
+                        spacing: 36
+                        padding: [36, 0]

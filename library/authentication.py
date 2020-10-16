@@ -1,6 +1,7 @@
 import pyrebase
 import requests
 
+from library.database import local_user
 from library.secrets import firebaseConfig
 
 
@@ -15,6 +16,7 @@ class Authentication():
         try:
             sign_in_request = self.auth.sign_in_with_email_and_password(email, password)
             localID = sign_in_request['localId']
+            local_user.local_ID = localID
             return True, localID
 
         except requests.exceptions.HTTPError as e:

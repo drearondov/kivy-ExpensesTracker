@@ -4,25 +4,25 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 
 from app.components.card.card import Card
-from library.dataStorage import DatabaseInteraction
+from app.components.transactions.transaction import DailyTransactions
+from library.database import local_user
 
 
 class HomeScreen(Screen):
     def __init__(self, **kwargs):
         super(Screen, self).__init__(**kwargs)
-        self.db = DatabaseInteraction()
 
-    def show_date(self, local_ID):
+    def show_date(self):
         today = date.today()
         self.ids['today'].text = today.strftime("%A, %d. %B %Y")
         self.ids['time_period'].text = today.strftime("%B %Y").upper()
 
-        username = self.db.get_users_data(local_ID)
+        username = local_user.user_info['first_name']
         self.ids['user_name'].markup = True
         self.ids['user_name'].text = f"Hello [font=assets/fonts/Anton-Regular]{username}![/font]"
 
-    def show_accounts(self, local_ID):
-        accounts = self.db.get_user_accounts(local_ID)
+    def show_accounts(self):
+        accounts = local_user.accounts
 
         if accounts != None:
             for account in accounts.each():
@@ -46,3 +46,10 @@ BoxLayout:
         ''')
 
         self.ids['accounts_slider'].add_widget(add_card)
+
+    def show_transactions(self, account='account_01', date_object=date.today()):
+        transactions_data = local_user.get_monthly_transactions(account, date_object)
+
+        for transaction_date, transactions_list in transactions_data.items():
+            daily_transaction = DailyTransactions().build_daily_transactions(transaction_date, transactions_list,account)
+            self.ids['transaction_slider'].add_widget(daily_transaction)

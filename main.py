@@ -12,6 +12,7 @@ from kivy.app import App
 
 from app.views.welcomescreen.welcomescreen import WelcomeScreen
 from app.views.loginscreen.loginscreen import LoginScreen
+from library.database import User
 
 
 class MainApp(App):
