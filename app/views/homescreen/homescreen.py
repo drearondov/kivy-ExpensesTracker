@@ -5,7 +5,8 @@ from kivy.uix.screenmanager import Screen
 
 from app.components.card.card import Card
 from app.components.transactions.transaction import DailyTransactions
-from library.database import local_user
+from app.components.transactionform.transactionform import TransactionForm
+from library.settings import local_user
 
 
 class HomeScreen(Screen):

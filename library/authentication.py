@@ -1,8 +1,8 @@
 import pyrebase
 import requests
 
-from library.database import local_user
 from library.secrets import firebaseConfig
+from library.settings import local_user
 
 
 firebase = pyrebase.initialize_app(firebaseConfig)
@@ -11,6 +11,19 @@ class Authentication():
 
     def __init__(self):
         self.auth = firebase.auth()
+
+    def anonymus_login(self):
+        try:
+            login_request = self.auth.sign_in_anonymous()
+            localID = login_request['localId']
+            local_user.local_ID = localID
+            return True, localID
+        
+        except requests.exceptions.HTTPError as e:
+            response = e.args[0].response
+            error_response = response.json()['error']['message']
+
+        return False, error_response
 
     def login(self, email, password):
         try:

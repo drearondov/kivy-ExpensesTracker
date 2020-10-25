@@ -1,0 +1,101 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<TransactionForm>
+
+    orientation: "vertical"
+    size_hint: 1, 0.6
+    pos_hint: {"x": 0, "y": 0}
+    padding: [48, 48]
+    spacing: 4
+
+    canvas:
+        Color:
+            rgba: hex('#FDFDFD')
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [(48, 48), (48, 48), (0, 0), (0, 0)]
+
+    Label:
+        text: 'ADD TRANSACTION'
+        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_size: ('24sp')
+        text_size: self.size
+        halign: 'left'
+        size_hint: 1, 0.095
+
+    BorderedLabel:
+        text: 'Category'
+        size_hint: 1, 0.095
+
+    GridLayout:
+        cols: 2
+        row: 3
+        spacing: 24
+        size_hint: 1, 0.5
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_food.png'
+            Label:
+                text: 'food'
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_lifestyle.png'
+            Label:
+                text: 'lifestyle'
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_household.png'
+            Label:
+                text: 'household'
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_health.png'
+            Label:
+                text: 'health'
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_transport.png'
+            Label:
+                text: 'transport'
+
+        CategorySelector:
+            Image:
+                source: 'assets/img/categories/type_savings.png'
+            Label:
+                text: 'finances'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.4
+        spacing: 16
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 4
+
+            BorderedLabel:
+                text: 'Transaction type'
+
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 16
+                padding: [0, 8]
+
+                BorderedToggle:
+                    text: 'expense'
+
+                BorderedToggle:
+                    text: 'income'
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 4
+
+            BorderedLabel:
+                text: 'Account'

@@ -18,6 +18,17 @@
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 24, 100)
             width: 1.5
 
+<BorderedToggle@ToggleButton>
+    canvas:
+        Color:
+            rgba: hex('#C0E1DD')
+        Line:
+            rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 24, 100)
+            width: 1.8
+
+    background_normal: ''
+    background_down: 'assets/img/select_square.jpg'
+
 <ImageButton@ButtonBehavior+Image>
     source: None
 
@@ -31,3 +42,35 @@
         Line:
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
             width: 1.5
+
+<BottomBorder@Widget>
+    border_color: (1, 1, 1, 1)
+    canvas.before:
+        Color:
+            rgba: root.border_color
+        Line:
+            points:(self.pos[0], self.pos[1], self.size[0], self.pos[1])
+            width: 1.8
+
+<BorderedLabel@Label+BottomBorder>
+    border_color: hex("#2E3C42")
+    halign: 'left'
+    font_name: 'assets/fonts/Anton-Regular.ttf'
+    font_size: ('14sp')
+    text_size: self.size
+
+<CategorySelector@BoxLayout+ToggleButton>
+    orientation: 'horizontal'
+    background_normal: ''
+    background_down: 'assets/img/select_square.jpg'
+
+    Image:
+        size_hint: None, None
+        size: self.texture_size
+
+    Label:
+        font_name: 'assets/fonts/Poppins-Regular.ttf'
+        font_size: ('12sp')
+        size_hint: 1, 1
+        text_size: self.size
+        halign: 'left'

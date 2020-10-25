@@ -160,7 +160,15 @@
                         id: transaction_slider
                         size_hint_y: None
                         cols: 1
-                        row_default_width: root.height * 0.4
-                        height: self.minimum_width
+                        row_default_height: root.height * 0.15
+                        height: self.minimum_height
                         spacing: 36
-                        padding: [36, 0]
+
+                        canvas:
+                            Color:
+                                rgba: hex("#2E3C42")
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+
+        TransactionForm:

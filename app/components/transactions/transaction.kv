@@ -37,34 +37,28 @@
     transaction_date: transaction_date
     daily_total: daily_total
 
-    size_hint_y: None
-    cols: 1
-    height: self.minimum_height
-    spacing: 16
+    orientation: "horizontal"
+    size_hint_y: 0.5
 
-    BoxLayout:
-        orientation: "horizontal"
-        size_hint_y: 0.3
+    canvas:
+        Color:
+            rgba: hex("#2E3C42")
+        Line:
+            points:(self.pos[0], self.pos[1], self.size[0], self.pos[1])
+            width: 1.5
 
-        canvas:
-            Color:
-                rgba: hex("#2E3C42")
-            Line:
-                points:(self.pos[0], self.pos[1], self.size[0], self.pos[1])
-                width: 1.5
+    Label:
+        id: transaction_date
+        text: "Monday 20"
+        halign: 'left'
+        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_size: ('14sp')
+        text_size: self.size
 
-        Label:
-            id: transaction_date
-            text: ""
-            halign: 'left'
-            font_name: 'assets/fonts/Anton-Regular.ttf'
-            font_size: ('14sp')
-            text_size: self.size
-
-        Label:
-            id: daily_total
-            text: ""
-            halign: 'right'
-            font_name: 'assets/fonts/Anton-Regular.ttf'
-            font_size: ('13sp')
-            text_size: self.size
+    Label:
+        id: daily_total
+        text: "S/. 86.80"
+        halign: 'right'
+        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_size: ('13sp')
+        text_size: self.size

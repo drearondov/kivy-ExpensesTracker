@@ -5,16 +5,14 @@ account_type = {
 
 currency_format = {
     'PEN': 'S/. {:,}',
-    'USD': "$ {:,}"
+    'USD': '$ {:,}'
 }
 
-sub_categories = {
-    'clothes': 'assets/img/categories/type_clothes.png',
-    'coffee': 'assets/img/categories/type_coffee.png',
-    'exercise': 'assets/img/categories/type_excercise.png',
-    'groceries': 'assets/img/categories/type_groceries.png',
-    'housing': 'assets/img/categories/type_housing.png',
-    'restaurant': 'assets/img/categories/type_restaurant.png',
-    'utilities': 'assets/img/categories/type_utilities.png'
+categories = {
+    'food': 'assets/img/categories/type_food.png',
+    'lifestyle': 'assets/img/categories/type_lifestyle.png',
+    'household': 'assets/img/categories/type_household.png',
+    'health': 'assets/img/categories/type_health.png',
+    'transport': 'assets/img/categories/type_transport.png',
+    'savings&debt': 'assets/img/categories/type_sabings.png'
 }
-#Donis&Felpu2020

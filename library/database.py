@@ -36,7 +36,6 @@ class User():
             'currency': str(currency),
         }
         self.db.child('users').child(str(local_ID)).set(data)
-        App.get_running_app().change_screen('home_screen')
 
     def get_user_data(self, local_ID):
         self.user_data = self.db.child('users').child(str(local_ID)).get()
@@ -60,8 +59,17 @@ class User():
 
         return monthly_transactions #already sorted
 
+    def new_transaction(self, amount, category, sub_category, date, description, transaction_type, account):
+        data = {
+            'date': str(date),
+            'category': str(category),
+            'sub_category': str(sub_category),
+            'transaction_type': str(transaction_type),
+            'description': str(description),
+            'amount': str(amount)
+        }
+        self.db.child('users').child(self.local_ID).child('accounts').child(account).child('transactions').push(data)
 
-local_user = User()
 
 if __name__ == "__main__":
     pass

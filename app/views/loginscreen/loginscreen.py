@@ -1,9 +1,11 @@
 from datetime import date
 from kivy.uix.screenmanager import Screen
 
+from library import secrets
 from library.authentication import Authentication
-from library.database import local_user
+from library.settings import local_user
 from app.views.homescreen.homescreen import HomeScreen
+
 
 class LoginScreen(Screen):
     def __init__(self, **kwargs):
@@ -12,6 +14,8 @@ class LoginScreen(Screen):
         self.home = HomeScreen()
     
     def login(self, email, password):
+        email = secrets.email
+        password = secrets.password
         code, content = self.auth.login(email, password)
 
         if code == True:
@@ -19,7 +23,6 @@ class LoginScreen(Screen):
             local_user.get_user_data(content)
             self.manager.ids['home_screen'].show_date()
             self.manager.ids['home_screen'].show_accounts()
-            self.manager.ids['home_screen'].show_transactions()
-            # populate homescreen
+            #self.manager.ids['home_screen'].show_transactions()
         else:
             self.ids['login_error'].text = content
