@@ -1,0 +1,25 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<StartScreen>
+
+    FloatLayout:
+        size: root.width, root.height
+
+        canvas:
+            Color:
+                rgba: hex("#FFFFFF")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        ImageButton:
+            source: 'assets/img/logo.png'
+            pos_hint: {"center_x": 0.5, "center_y": 0.53}
+            on_press: root.manager.current = 'welcome_screen'
+
+        Label:
+            text: "moneyBox"
+            color: hex("#2E3C42")
+            font_size: ('24sp')
+            font_name: 'assets/fonts/Anton-Regular.ttf'
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}

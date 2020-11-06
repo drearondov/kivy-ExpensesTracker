@@ -4,6 +4,7 @@
 #: include app/views/loginscreen/loginscreen.kv
 #: include app/views/signupscreen/signupscreen.kv
 #: include app/views/welcomescreen/welcomescreen.kv
+#: include app/views/startscreen/startscreen.kv
 
 #: include app/components/widgets.kv
 #: include app/components/card/card.kv
@@ -11,8 +12,11 @@
 #: include app/components/transactionform/transactionform.kv
 
 
-ScreenManager:
+Manager:
     id: screen_manager
+    StartScreen:
+        name: "start_screen"
+        id: start_screen
     WelcomeScreen:
         name: "welcome_screen"
         id: welcome_screen

@@ -1,4 +1,5 @@
 from datetime import date
+from logging import root
 from kivy.uix.screenmanager import Screen
 
 from library import secrets
@@ -8,6 +9,7 @@ from app.views.homescreen.homescreen import HomeScreen
 
 
 class LoginScreen(Screen):
+
     def __init__(self, **kwargs):
         super(Screen, self).__init__(**kwargs)
         self.auth = Authentication()
