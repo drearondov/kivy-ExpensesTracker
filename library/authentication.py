@@ -12,7 +12,7 @@ class Authentication():
     def __init__(self):
         self.auth = firebase.auth()
 
-    def anonymus_login(self):
+    def anonymous_login(self):
         try:
             login_request = self.auth.sign_in_anonymous()
             localID = login_request['localId']

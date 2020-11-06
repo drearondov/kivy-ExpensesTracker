@@ -29,42 +29,50 @@
                     pos: self.pos
                     radius: [0,48, 48, 0]
 
+            Label:
+                text: "moneyBox"
+                text_size: self.size
+                font_size: ('48sp')
+                font_name: 'assets/fonts/Anton-Regular.ttf'
+                halign: 'left'
+                line_height: 0.8
+                size_hint: 1, 0.3
+
+            Label:
+                text:
+                    'your wallet is not\na rabbit hole'
+                text_size: self.size
+                font_size: ('14sp')
+                font_name: 'assets/fonts/Poppins-Regular.ttf'
+                halign: 'left'
+                valign: 'top'
+                line_height: 0.8
+                size_hint: 1, 0.5
+
             BoxLayout:
                 orientation: "horizontal"
+                padding: 48, 0
+                spacing: 48
                 size_hint: 1, 1
 
-                Label:
-                    text: "moneyBox"
-                    text_size: self.size
-                    font_size: ('48sp')
+                RoundedButton:
+                    back_color: hex('#2E3C42')
+                    color: hex('#FDFDFD')
+                    border_radius: [32]
+                    text: "log in"
+                    font_size: ('14sp')
                     font_name: 'assets/fonts/Anton-Regular.ttf'
-                    valign: 'top'
-                    halign: 'left'
-                    line_height: 0.8
-
-                ImageButton:
-                    source: 'assets/img/RIght.png'
-                    size_hint: None, None
-                    size: self.texture_size
-                    pos_hint: {'top': 0.98}
+                    size_hint: 0.32, 0.15
+                    pos_hint: {'right': 1}
                     on_press: root.manager.current = 'login_screen'
 
-            BoxLayout:
-                orientation: "vertical"
-
-                Label:
-                    text:
-                        'It is not the man who has\ntoo little, but the man who\ncraves more, that is poor.'
-                    text_size: self.size
-                    font_size: ('16sp')
-                    halign: 'left'
-                    line_height: 0.8
-
-                Label:
-                    text: 'Seneca'
-                    font_name: 'assets/fonts/Poppins-Regular.ttf'
-                    text_size: self.size
+                RoundedButton:
+                    back_color: hex('#2E3C42')
+                    color: hex('#FDFDFD')
+                    border_radius: [32]
+                    text: "sign up"
                     font_size: ('14sp')
-                    halign: 'left'
-                    line_height: 0.8
-                    size_hint: 1, 0.25
+                    font_name: 'assets/fonts/Anton-Regular.ttf'
+                    size_hint: 0.32, 0.15
+                    pos_hint: {'right': 1}
+                    on_press: root.manager.current = 'signup_screen'

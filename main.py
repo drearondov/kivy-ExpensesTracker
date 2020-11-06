@@ -13,8 +13,10 @@ from kivy.app import App
 from kivy.storage.jsonstore import JsonStore
 
 from app.views.startscreen.startscreen import StartScreen
-from app.views.welcomescreen.welcomescreen import WelcomeScreen
+from app.views.loginscreen.loginscreen import LoginScreen
+from app.views.signupscreen.signupscreen import SignupScreen
 from app.views.homescreen.homescreen import HomeScreen
+from app.views.welcomescreen.welcomescreen import WelcomeScreen
 
 from library.settings import local_user
 
@@ -41,9 +43,8 @@ class MainApp(App):
             self.root.current = 'welcome_screen'
 
     def on_stop(self):
-        if local_user.local_ID == "":
-            local_store = JsonStore('library/local_user.json')
-            local_store.put('local_user', local_ID=local_user.local_ID)
+        local_store = JsonStore('library/local_user.json')
+        local_store.put('local_user', local_ID=local_user.local_ID)
 
 if __name__ == "__main__":
     MainApp().run()

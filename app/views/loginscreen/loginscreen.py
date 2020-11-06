@@ -2,10 +2,11 @@ from datetime import date
 from logging import root
 from kivy.uix.screenmanager import Screen
 
+from app.views.homescreen.homescreen import HomeScreen
+
 from library import secrets
 from library.authentication import Authentication
 from library.settings import local_user
-from app.views.homescreen.homescreen import HomeScreen
 
 
 class LoginScreen(Screen):
