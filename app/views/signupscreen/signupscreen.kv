@@ -41,7 +41,7 @@
         BoxLayout:
             orientation: "vertical"
             size_hint: 0.8, 0.6
-            pos_hint: {"x": 0, "top": 0.8}
+            pos_hint: {"center_x": 0.5, "top": 0.8}
             padding: 72
 
             canvas:
@@ -50,11 +50,12 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [0,48, 48, 0]
+                    radius: [48]
 
             ImageButton:
                 source: 'assets/img/Back.png'
                 size_hint: (None, None)
+                pos_hint: {"x": -0.1}
                 size: self.texture_size
                 on_press: root.manager.current = 'login_screen'
 
@@ -120,7 +121,7 @@
                     pos_hint: {"x": 0.05}
 
             RoundedButton:
-                back_color: hex('#2E3C42')
+                back_color: hex('#2D1340')
                 color: hex('#FDFDFD')
                 border_radius: [32]
                 text: "sign up"

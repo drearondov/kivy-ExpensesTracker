@@ -2,7 +2,7 @@
 
 <Label>
     font_name: 'assets/fonts/Poppins-Regular.ttf'
-    color: hex('#2E3C42')
+    color: hex('#2D1340')
 
 <Button>
     background_normal: ''
@@ -15,7 +15,7 @@
     background_active: 'assets/img/white_square.jpg'
     font_name: "assets/fonts/Poppins-Regular.ttf"
     font_size: ('12sp')
-    foreground_color: hex('#2E3C42')
+    foreground_color: hex('#2D1340')
     padding: [16, 8]
 
 
@@ -38,7 +38,7 @@
         BoxLayout:
             orientation: "vertical"
             size_hint: 0.8, 0.6
-            pos_hint: {"x": 0, "top": 0.8}
+            pos_hint: {"center_x": 0.5, "top": 0.8}
             padding: 72
 
             canvas:
@@ -47,12 +47,13 @@
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [0,48, 48, 0]
+                    radius: [48]
 
             ImageButton:
                 source: 'assets/img/Back.png'
                 size_hint: (None, None)
                 size: self.texture_size
+                pos_hint: {"x": -0.1}
                 on_press: root.manager.current = 'welcome_screen'
 
             Label:
@@ -84,8 +85,8 @@
                     size_hint: 1, 0.7
                     TextInput:
                         id: login_email
-                        color: hex('#2E3C42')
-                        cursor_color: hex('#2E3C42')
+                        color: hex('#2D1340')
+                        cursor_color: hex('#2D1340')
                         hint_text: "e-mail"
 
                 BoxLayout:
@@ -95,8 +96,8 @@
                     InputField:
                         TextInput:
                             id: login_password
-                            color: hex('#2E3C42')
-                            cursor_color: hex('#2E3C42')
+                            color: hex('#2D1340')
+                            cursor_color: hex('#2D1340')
                             hint_text: "password"
 
                     Label:
@@ -110,7 +111,7 @@
                         pos_hint: {"x": 0.05}
 
                 RoundedButton:
-                    back_color: hex('#2E3C42')
+                    back_color: hex('#2D1340')
                     color: hex('#FDFDFD')
                     border_radius: [32]
                     text: "log in"

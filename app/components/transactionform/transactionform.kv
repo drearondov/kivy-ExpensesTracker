@@ -2,10 +2,15 @@
 
 <TransactionForm>
 
+    transaction_description: transaction_description
+    transaction_date: transaction_date
+    transaction_ammount: transaction_ammount
+    transaction_account: transaction_account
+
     orientation: "vertical"
-    size_hint: 1, 0.6
-    pos_hint: {"x": 0, "y": 0}
-    padding: [48, 48]
+    size_hint: 0.9, 0.8
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: [36, 36]
     spacing: 4
 
     canvas:
@@ -14,7 +19,13 @@
         RoundedRectangle:
             pos: self.pos
             size: self.size
-            radius: [(48, 48), (48, 48), (0, 0), (0, 0)]
+            radius: [48]
+
+    ImageButton:
+        source: 'assets/img/Back.png'
+        size_hint: None, 0.05
+        size: self.texture_size
+        # on_press: root.manager.current = 'welcome_screen'
 
     Label:
         text: 'ADD TRANSACTION'
@@ -29,73 +40,177 @@
         size_hint: 1, 0.095
 
     GridLayout:
-        cols: 2
-        row: 3
-        spacing: 24
-        size_hint: 1, 0.5
+        cols: 3
+        row: 2
+        size_hint: 1, 0.4
 
         CategorySelector:
+            on_press: root.set_category('food')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_food.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5}
             Label:
                 text: 'food'
 
         CategorySelector:
+            on_press: root.set_category('lifestyle')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_lifestyle.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
             Label:
                 text: 'lifestyle'
 
         CategorySelector:
+            on_press: root.set_category('household')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_household.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
             Label:
                 text: 'household'
 
         CategorySelector:
+            on_press: root.set_category('health')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_health.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
             Label:
                 text: 'health'
 
         CategorySelector:
+            on_press: root.set_category('transport')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_transport.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
             Label:
                 text: 'transport'
 
         CategorySelector:
+            on_press: root.set_category('finances')
+            group: 'category'
             Image:
                 source: 'assets/img/categories/type_savings.png'
+                size_hint: None, None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.5, 'y': 0.2}
             Label:
                 text: 'finances'
 
     BoxLayout:
-        orientation: 'horizontal'
-        size_hint: 1, 0.4
-        spacing: 16
+        orientation: 'vertical'
+        size_hint: 1, 0.3
+        spacing: 24
+
+        BorderedLabel:
+            text: 'Transaction type'
 
         BoxLayout:
-            orientation: 'vertical'
-            spacing: 4
-
-            BorderedLabel:
-                text: 'Transaction type'
+            orientation: 'horizontal'
+            spacing: 16
+            padding: [48, 8]
 
             BoxLayout:
-                orientation: 'horizontal'
-                spacing: 16
-                padding: [0, 8]
+                orientation: "horizontal"
+                spacing: 8
 
-                BorderedToggle:
+                CheckBox:
+                    size_hint: 0.2, 1
+                    color: hex('#2D1340')
+                    on_press: root.set_type(True)
+                    group: 'transaction_type'
+
+                Label:
                     text: 'expense'
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'center'
 
-                BorderedToggle:
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 8
+
+                CheckBox:
+                    size_hint: 0.2, 1
+                    color: hex('#2D1340')
+                    on_press: root.set_type(False)
+                    group: 'transaction_type'
+
+                Label:
                     text: 'income'
+                    text_size: self.size
+                    halign: 'left'
+                    valign: 'center'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 1, 0.3
+        spacing: 24
+
+        BorderedLabel:
+            text: 'Account'
+
+        InputField:
+            TextInput:
+                id: transaction_account
+                color: hex('#2D1340')
+                cursor_color: hex('#2D1340')
+                hint_text: "account name"
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 24
+        size_hint: 1, 0.5
+
+        BorderedLabel:
+            text: 'Transaction Information'
+
+        InputField:
+            TextInput:
+                id: transaction_description
+                color: hex('#2D1340')
+                cursor_color: hex('#2D1340')
+                hint_text: "description"
 
         BoxLayout:
-            orientation: 'vertical'
-            spacing: 4
+            orientation: "horizontal"
+            spacing: 24
 
-            BorderedLabel:
-                text: 'Account'
+            InputField:
+                TextInput:
+                    id: transaction_date
+                    color: hex('#2D1340')
+                    cursor_color: hex('#2D1340')
+                    hint_text: "dd/mm/yyyy"
+
+            InputField:
+                TextInput:
+                    id: transaction_ammount
+                    color: hex('#2D1340')
+                    cursor_color: hex('#2D1340')
+                    hint_text: "ammount"
+
+            RoundedButton:
+                back_color: hex('#2D1340')
+                color: hex('#FDFDFD')
+                border_radius: [32]
+                text: "add"
+                font_size: ('14sp')
+                font_name: 'assets/fonts/Anton-Regular.ttf'
+                size_hint: (0.45, 1)
+                on_press:
+                    # root.add_transaction(transaction_ammount.text, transaction_date.text, transaction_description.text, transaction_account.text)
+                    root.slide(False)

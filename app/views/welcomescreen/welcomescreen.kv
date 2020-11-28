@@ -2,32 +2,23 @@
 
 <Label>
     font_name: 'assets/fonts/Poppins-Medium.ttf'
-    color: hex('#2E3C42')
+    color: hex('#2D1340')
 
 <WelcomeScreen>:
 
     FloatLayout:
-        size: root.width, root.height
 
         canvas:
+            Color:
+                rgba: hex('#FFFFFF')
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "assets/img/background.png"
 
         BoxLayout:
             orientation: "vertical"
-            size_hint: 0.8, 0.6
-            pos_hint: {"x": 0, "top": 0.8}
-            padding: [48, 48, 24, 48]
-
-            canvas:
-                Color:
-                    rgba: hex('#FFFFFF')
-                RoundedRectangle:
-                    size: self.size
-                    pos: self.pos
-                    radius: [0,48, 48, 0]
+            padding: [24, 48]
+            pos_hint: {"x": 0.15}
 
             Label:
                 text: "moneyBox"
@@ -35,8 +26,8 @@
                 font_size: ('48sp')
                 font_name: 'assets/fonts/Anton-Regular.ttf'
                 halign: 'left'
-                line_height: 0.8
-                size_hint: 1, 0.3
+                valign: "bottom"
+                size_hint: 1, 0.5
 
             Label:
                 text:
@@ -49,30 +40,35 @@
                 line_height: 0.8
                 size_hint: 1, 0.5
 
-            BoxLayout:
-                orientation: "horizontal"
-                padding: 48, 0
-                spacing: 48
-                size_hint: 1, 1
+        Image:
+            source: 'assets/img/Scribble.png'
+            pos_hint: {"x": -0.025, "y": 0.02}
 
-                RoundedButton:
-                    back_color: hex('#2E3C42')
-                    color: hex('#FDFDFD')
-                    border_radius: [32]
-                    text: "log in"
-                    font_size: ('14sp')
-                    font_name: 'assets/fonts/Anton-Regular.ttf'
-                    size_hint: 0.32, 0.15
-                    pos_hint: {'right': 1}
-                    on_press: root.manager.current = 'login_screen'
+        BoxLayout:
+            orientation: "horizontal"
+            padding: 36, 0
+            spacing: 36
+            size_hint: 1, 0.3
+            pos_hint: {"y": 0.05}
 
-                RoundedButton:
-                    back_color: hex('#2E3C42')
-                    color: hex('#FDFDFD')
-                    border_radius: [32]
-                    text: "sign up"
-                    font_size: ('14sp')
-                    font_name: 'assets/fonts/Anton-Regular.ttf'
-                    size_hint: 0.32, 0.15
-                    pos_hint: {'right': 1}
-                    on_press: root.manager.current = 'signup_screen'
+            RoundedButton:
+                back_color: hex('#2D1340')
+                color: hex('#FDFDFD')
+                border_radius: [28]
+                text: "log in"
+                font_size: ('14sp')
+                font_name: 'assets/fonts/Anton-Regular.ttf'
+                size_hint: 0.32, 0.15
+                pos_hint: {'right': 1}
+                on_press: root.manager.current = 'login_screen'
+
+            RoundedButton:
+                back_color: hex('#2D1340')
+                color: hex('#FDFDFD')
+                border_radius: [28]
+                text: "sign up"
+                font_size: ('14sp')
+                font_name: 'assets/fonts/Anton-Regular.ttf'
+                size_hint: 0.32, 0.15
+                pos_hint: {'right': 1}
+                on_press: root.manager.current = 'signup_screen'

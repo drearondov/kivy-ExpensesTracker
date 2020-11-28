@@ -1,19 +1,19 @@
 <RoundedButton@Button>
     background_color: (0, 0, 0, 0)
     back_color: (1, 0, 1, 1)
-    border_radius: [16]
+    border_radius: None
     canvas.before:
         Color:
             rgba: self.back_color
         RoundedRectangle:
             size: self.size
             pos: self.pos
-            radius: self.border_radius
+            radius: [16, 16, 16, 16] if self.border_radius is None else self.border_radius
 
 <BorderedButton@Button>
     canvas:
         Color:
-            rgba: hex('#C0E1DD')
+            rgba: hex('#2D1340')
         Line:
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 24, 100)
             width: 1.5
@@ -21,7 +21,7 @@
 <BorderedToggle@ToggleButton>
     canvas:
         Color:
-            rgba: hex('#C0E1DD')
+            rgba: hex('#2D1340')
         Line:
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 24, 100)
             width: 1.8
@@ -38,10 +38,10 @@
 
     canvas:
         Color:
-            rgba: hex('#2E3C42')
+            rgba: hex('#2D1340')
         Line:
             rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 32, 100)
-            width: 1.5
+            width: 1.2
 
 <BottomBorder@Widget>
     border_color: (1, 1, 1, 1)
@@ -49,28 +49,29 @@
         Color:
             rgba: root.border_color
         Line:
-            points:(self.pos[0], self.pos[1], self.size[0], self.pos[1])
-            width: 1.8
+            points:(self.pos[0], self.pos[1], 1.1*self.size[0], self.pos[1])
+            width: 1.2
 
 <BorderedLabel@Label+BottomBorder>
-    border_color: hex("#2E3C42")
+    border_color: hex("#2D1340")
     halign: 'left'
     font_name: 'assets/fonts/Anton-Regular.ttf'
-    font_size: ('14sp')
+    font_size: ('16sp')
     text_size: self.size
+    padding: [8, 0]
 
 <CategorySelector@BoxLayout+ToggleButton>
-    orientation: 'horizontal'
+    orientation: 'vertical'
     background_normal: ''
     background_down: 'assets/img/select_square.jpg'
 
     Image:
-        size_hint: None, None
-        size: self.texture_size
+        allow_strech: True
 
     Label:
         font_name: 'assets/fonts/Poppins-Regular.ttf'
-        font_size: ('12sp')
-        size_hint: 1, 1
+        font_size: ('10sp')
         text_size: self.size
-        halign: 'left'
+        halign: 'center'
+        valign:'top'
+        size_hint: 1, 1

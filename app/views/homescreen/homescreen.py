@@ -50,6 +50,7 @@ BoxLayout:
 
     def show_transactions(self, account='account_01', date_object=date.today()):
         transactions_data = local_user.get_monthly_transactions(account, date_object)
+        print(transactions_data)
 
         for transaction_date, transactions_list in transactions_data.items():
             daily_transaction = DailyTransactions().build_daily_transactions(transaction_date, transactions_list,account)

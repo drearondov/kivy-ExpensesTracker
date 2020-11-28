@@ -3,7 +3,7 @@ import os
 os.environ['KIVY_IMAGE'] = 'sdl2'
 
 import kivy
-kivy.require('1.11.1')
+kivy.require('1.11.0')
 
 from kivy.config import Config
 Config.set('graphics', 'width', '375')
@@ -38,7 +38,7 @@ class MainApp(App):
             local_user.get_user_data(local_user.local_ID)
             self.root.ids['home_screen'].show_date()
             self.root.ids['home_screen'].show_accounts()
-            #self.root.ids['home_screen'].show_transactions()
+            self.root.ids['home_screen'].show_transactions()
         else:
             self.root.current = 'welcome_screen'
 

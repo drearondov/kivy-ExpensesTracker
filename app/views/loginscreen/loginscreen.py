@@ -26,6 +26,6 @@ class LoginScreen(Screen):
             local_user.get_user_data(content)
             self.manager.ids['home_screen'].show_date()
             self.manager.ids['home_screen'].show_accounts()
-            #self.manager.ids['home_screen'].show_transactions()
+            self.manager.ids['home_screen'].show_transactions()
         else:
             self.ids['login_error'].text = content

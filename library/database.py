@@ -27,7 +27,7 @@ class User():
         self.user_data = None
         self.accounts = None
 
-    def create_new_user(self, local_ID, username, first_name, last_name, email, currency="PEN"):
+    def create_new_user(self, local_ID, username, first_name, last_name, email, currency="PEN") -> None:
         data = {
             'username': str(username),
             'first_name': str(first_name),
@@ -37,13 +37,12 @@ class User():
         }
         self.db.child('users').child(str(local_ID)).set(data)
 
-    def get_user_data(self, local_ID):
+    def get_user_data(self, local_ID) -> None:
         self.user_data = self.db.child('users').child(str(local_ID)).get()
         self.user_info = self.user_data.val()
         self.accounts = self.db.child('users').child(str(local_ID)).child('accounts').get()
 
-
-    def get_monthly_transactions(self, account, date_object):
+    def get_monthly_transactions(self, account, date_object) -> dict:
         """
         Returns a dictionary of transactions grouped by date.
         """
@@ -59,16 +58,21 @@ class User():
 
         return monthly_transactions #already sorted
 
-    def new_transaction(self, amount, category, sub_category, date, description, transaction_type, account):
-        data = {
-            'date': str(date),
-            'category': str(category),
-            'sub_category': str(sub_category),
-            'transaction_type': str(transaction_type),
-            'description': str(description),
-            'amount': str(amount)
-        }
+    def new_transaction(self,data, account) -> None:
+        """
+        Uploads a transaction to the database and updates the said account balance.
+        """
         self.db.child('users').child(self.local_ID).child('accounts').child(account).child('transactions').push(data)
+        
+        account_balance = self.accounts.val()[account]['account_balance']
+
+        if data['transaction_type']:
+            account_balance -= float(data['amount'])
+        else:
+            account_balance += float(data['amount'])
+
+        self.db.child('users').child(self.local_ID).child('accounts').child(account).update({"account_balance": account_balance})
+        self.accounts = self.db.child('users').child(str(self.local_ID)).child('accounts').get()
 
 
 if __name__ == "__main__":
