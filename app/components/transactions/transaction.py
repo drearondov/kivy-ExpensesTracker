@@ -6,7 +6,7 @@ from library.variables import categories, currency_format
 
 class Transaction(BoxLayout):
     """
-    Class representing the transactions for each account.
+    Class representing a single transaction.
     """
     def __init__(self, **kwargs):
         super(Transaction, self).__init__(**kwargs)
@@ -14,7 +14,11 @@ class Transaction(BoxLayout):
     def build_transaction(self, transaction):
         self.ids['type'].source = categories[transaction['category']]
         self.ids['description'].text = transaction['description']
-        self.ids['amount'].text = currency_format[transaction['currency']].format(transaction['amount'])
+
+        if transaction['transaction_type']:
+            self.ids['amount'].text = currency_format[transaction['currency']].format(-float(transaction['amount']))
+        else:
+            self.ids['amount'].text = currency_format[transaction['currency']].format(float(transaction['amount']))
 
         return self
 
@@ -30,6 +34,17 @@ class DailyTransactions(BoxLayout):
         Returns a block of one day's transaction
         """
         self.ids['transaction_date'].text = transaction_date.strftime('%A %d')
-        # Calculate daily total
+        
+        daily_total = 0
+
+        for transaction in transactions_list:
+            if transaction['transaction_type']:
+                daily_total -= float(transaction['amount'])
+            else:
+                daily_total += float(transaction['amount'])
+
+        account_currency = local_user.accounts.val()[account]['account_currency']
+
+        self.ids['daily_total'].text = currency_format[account_currency].format(daily_total)
 
         return self

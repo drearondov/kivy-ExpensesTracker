@@ -1,8 +1,8 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'assets/fonts/Poppins-Regular.ttf'
-    color: hex('#32270B')
+    font_name: 'assets/fonts/Roboto-Regular.ttf'
+    color: hex('#333333')
 
 <Button>
     background_normal: ''
@@ -13,9 +13,9 @@
     multiline: False
     background_normal: 'assets/img/white_square.jpg'
     background_active: 'assets/img/white_square.jpg'
-    font_name: "assets/fonts/Poppins-Regular.ttf"
+    font_name: "assets/fonts/Roboto-Regular.ttf"
     font_size: ('12sp')
-    foreground_color: hex('#32270B')
+    foreground_color: hex('#333333')
     padding: [16, 8]
 
 
@@ -31,6 +31,13 @@
 
     FloatLayout:
         size: root.width, root.height
+
+        canvas.before:
+            Color:
+                rgba: hex('#F8F8F8')
+            Rectangle:
+                size: self.size
+                pos: self.pos
 
         canvas:
             Rectangle:
@@ -61,7 +68,7 @@
 
             Label:
                 text: "create\naccount"
-                font_name: 'assets/fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                 font_size: ('36sp')
                 halign: "left"
                 line_height: 0.8
@@ -77,7 +84,7 @@
                 InputField:
                     TextInput:
                         id: username
-                        cursor_color: hex('#32270B')
+                        cursor_color: hex('#333333')
                         hint_text: "username"
 
                 BoxLayout:
@@ -88,25 +95,25 @@
                     InputField:
                         TextInput:
                             id: first_name
-                            cursor_color: hex('#32270B')
+                            cursor_color: hex('#333333')
                             hint_text: "first name"
 
                     InputField:
                         TextInput:
                             id: last_name
-                            cursor_color: hex('#32270B')
+                            cursor_color: hex('#333333')
                             hint_text: "last name"
 
                 InputField:
                     TextInput:
                         id: email
-                        cursor_color: hex('#32270B')
+                        cursor_color: hex('#333333')
                         hint_text: "email"
 
                 InputField:
                     TextInput:
                         id: password
-                        cursor_color: hex('#32270B')
+                        cursor_color: hex('#333333')
                         hint_text: "password"
 
                 Label:
@@ -126,7 +133,7 @@
                 border_radius: [32]
                 text: "sign up"
                 font_size: ('14sp')
-                font_name: 'assets/fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                 size_hint: 0.32, 0.15
                 pos_hint: {'right': 1}
                 on_press:

@@ -1,6 +1,6 @@
 account_type = {
     'Cash': 'assets/img/cash.png',
-    'Credit': 'assets/img/credit.png'
+    'Credit': 'assets/img/credit.png',
 }
 
 currency_format = {
@@ -14,5 +14,5 @@ categories = {
     'household': 'assets/img/categories/type_household.png',
     'health': 'assets/img/categories/type_health.png',
     'transport': 'assets/img/categories/type_transport.png',
-    'savings&debt': 'assets/img/categories/type_sabings.png'
+    'savings&debt': 'assets/img/categories/type_savings.png'
 }

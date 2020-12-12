@@ -1,7 +1,7 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'assets/fonts/Poppins-Regular.ttf'
+    font_name: 'assets/fonts/Roboto-Regular.ttf'
     color: hex('#2D1340')
 
 <Button>
@@ -15,39 +15,34 @@
     accounts_slider: accounts_slider
     today: today
     time_period: time_period
+    transaction_form: transaction_form
 
 
     FloatLayout:
         size: root.width, root.height
 
         canvas:
+            Color:
+                rgba: hex('#FDFDFD')
             Rectangle:
                 size: self.size
                 pos: self.pos
-                source: "assets/img/background.png"
 
         # Top float
         BoxLayout:
             orientation: "vertical"
             size_hint: 0.5013, 0.08
-            pos_hint: {"x": 0, "top": 0.93}
+            pos_hint: {"x": 0, "top": 0.95}
             padding: [48, 16, 48, 16]
-
-            canvas:
-                Color:
-                    rgba: hex('#FDFDFD')
-                RoundedRectangle:
-                    size: self.size
-                    pos: self.pos
-                    radius: [(0, 0), (24, 24), (24, 24), (0, 0)]
 
             Label:
                 id: today
                 text: ''
-                font_name: 'assets/fonts/Poppins-Regular.ttf'
+                font_name: 'assets/fonts/Roboto-Regular.ttf'
                 text_size: self.size
                 font_size: ('10sp')
                 halign: 'left'
+                color: hex('#737373')
 
             Label:
                 id: user_name
@@ -57,16 +52,16 @@
                 halign: 'left'
 
         BoxLayout:
-            size_hint: 0.15, 0.08
-            pos_hint: {"right": 1, "top": 0.93}
+            size_hint: 0.125, 0.055
+            pos_hint: {"right": 0.95, "top": 0.93}
 
             canvas:
                 Color:
-                    rgba: hex('#FDFDFD')
+                    rgba: hex('#F2F2F2')
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
-                    radius: [(24,24), (0, 0), (0, 0), (24, 24)]
+                    radius: [24]
 
             ImageButton:
                 source: 'assets/img/settings.png'
@@ -75,8 +70,18 @@
 
         # Middle slider
         BoxLayout:
-            pos_hint: {'top': 0.82}
-            size_hint: 1, 0.18
+            orientation: 'vertical'
+            pos_hint: {'y': 0.66}
+            size_hint: 1, 0.28
+            spacing: 16
+
+            Label:
+                text: 'Accounts'
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+                text_size: self.size
+                font_size: ('18sp')
+                halign: 'left'
+                pos_hint: {'x': 0.05}
 
             ScrollView:
                 do_scroll_x: True
@@ -95,17 +100,9 @@
         # Bottom box layout
         BoxLayout:
             orientation: "vertical"
-            size_hint: 1, 0.6
+            size_hint: 1, 0.65
             pos_hint: {"x": 0, "y": 0}
             padding: [24, 48]
-
-            canvas:
-                Color:
-                    rgba: hex('#FDFDFD')
-                RoundedRectangle:
-                    pos: self.pos
-                    size: self.size
-                    radius: [(48, 48), (48, 48), (0, 0), (0, 0)]
 
             BoxLayout:
                 orientation: "horizontal"
@@ -114,18 +111,20 @@
                 padding: [16, 0]
 
                 Label:
-                    text: 'ACTIVITY'
-                    font_name: 'assets/fonts/Anton-Regular.ttf'
-                    font_size: ('24sp')
+                    text: 'Activity'
+                    font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
+                    font_size: ('18sp')
                     text_size: self.size
                     halign: 'left'
 
-                BorderedButton:
+                RoundedButton:
                     text: 'history'
-                    font_name: 'assets/fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                     font_size: ('14sp')
                     size_hint: 0.3, 1
-                    color: hex('#2D1340')
+                    back_color: hex('#333333')
+                    color: hex('#FDFDFD')
+                    border_radius: [24]
 
             BoxLayout:
                 orientation: "horizontal"
@@ -135,18 +134,20 @@
                     source: 'assets/img/Back.png'
                     size_hint: (0.1, 1)
                     size: self.texture_size
+                    on_press: root.change_month(False)
 
                 Label:
                     id: time_period
                     text: ''
                     size_hint: 1, 1
                     font_size: ('14sp')
-                    font_name: 'assets/fonts/Poppins-Bold.ttf'
+                    font_name: 'assets/fonts/Roboto-Bold.ttf'
 
                 ImageButton:
                     source: 'assets/img/Right.png'
                     size_hint: (0.1, 1)
                     size: self.texture_size
+                    on_press: root.change_month(True)
 
             BoxLayout:
                 orientation: "vertical"
@@ -160,13 +161,31 @@
                         id: transaction_slider
                         size_hint_y: None
                         cols: 1
-                        row_default_height: root.height * 0.15
+                        row_default_height: root.height * 0.05
                         height: self.minimum_height
-                        spacing: 36
+                        spacing: 4
+                        padding: [24, 0]
 
-                        canvas:
-                            Color:
-                                rgba: hex("#2D1340")
-                            Rectangle:
-                                size: self.size
-                                pos: self.pos
+        # Form button
+        BoxLayout:
+            pos_hint: {'right': 0.925, 'top': 0.125}
+            size_hint: None, None
+            size: 128, 128
+
+            canvas:
+                Color:
+                    rgba: hex("#2D1340")
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [64]
+
+            ImageButton:
+                source: 'assets/img/Add.png'
+                size: self.texture_size
+                on_press: root.ids['transaction_form'].slide(True)
+
+        # Transaction form
+        TransactionForm:
+            id: transaction_form
+            pos_hint: {"top": -0.1, "center_x": 0.5}

@@ -9,19 +9,27 @@
     orientation: "vertical"
     padding: [24, 24]
     spacing: 8
+    on_state: root.change_state()
 
-    canvas:
+    canvas.before:
         Color:
-            rgba: hex('#FFFFFF')
+            rgba: hex('#F2F2F2')
         RoundedRectangle:
             size: self.size
             pos: self.pos
             radius: [36]
 
+    canvas:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [36]
+            source: "assets/img/card.png"
+
     Label:
         id: card_title
         text: 'CASH'
-        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
         font_size: ('14sp')
         text_size: self.size
         halign: 'left'
@@ -37,9 +45,9 @@
     Label:
         id: card_text
         text: '$ 26 000'
-        font_size: ('18sp')
-        font_name: 'assets/fonts/Poppins-Regular.ttf'
+        font_size: ('16sp')
+        font_name: 'assets/fonts/Roboto-Regular.ttf'
         text_size: self.size
         halign: 'right'
         valign: 'bottom'
-        size_hint: 1, 1
+        size_hint: 1, 0.5

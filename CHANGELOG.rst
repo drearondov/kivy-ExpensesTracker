@@ -10,15 +10,15 @@ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0
 [Unreleased]
 ============
 
-* Scrolling view on homescreen
-* Add expense panel
-* Include anonymus log in
-* Set up session rememberings
+* New add menu
+* Include guest log in
 * Expenses history and graph
-* Settings pannel
+* Settings panel
+* Add account panel
+* Set up e-mail recovery and verification
 
-[0.1.0dev] (3/10/2020)
-======================
+[0.1.0-alpha] (3/10/2020)
+=========================
 
 Added
 -----
@@ -30,3 +30,26 @@ Added
 Changed
 -------
 * Finished homescreen
+
+[0.1.0-alpha.1] (29/11/2020)
+============================
+
+Added
+-----
+
+* Scrolling view on homescreen
+* Add transaction panel
+* Set up session remember
+
+[0.1.0-alpha.2] (12/12/2020)
+============================
+
+Added
+-----
+
+* Toggle button on account slider
+
+Changed
+-------
+
+* General UI modification

@@ -1,21 +1,21 @@
 #:import hex kivy.utils.get_color_from_hex
 
 <Label>
-    font_name: 'assets/fonts/Poppins-Regular.ttf'
-    color: hex('#2D1340')
+    font_name: 'assets/fonts/Roboto-Regular.ttf'
+    color: hex('#333333')
 
 <Button>
     background_normal: ''
     background_down: ''
-    color: hex('#FFFFFF')
+    color: hex('#FDFDFD')
 
 <TextInput>
     multiline: False
     background_normal: 'assets/img/white_square.jpg'
     background_active: 'assets/img/white_square.jpg'
-    font_name: "assets/fonts/Poppins-Regular.ttf"
+    font_name: "assets/fonts/Roboto-Regular.ttf"
     font_size: ('12sp')
-    foreground_color: hex('#2D1340')
+    foreground_color: hex('#333333')
     padding: [16, 8]
 
 
@@ -29,7 +29,16 @@
     FloatLayout:
         size: root.width, root.height
 
+        canvas.before:
+            Color:
+                rgba: hex('#F8F8F8')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
         canvas:
+            Color:
+                rgba: hex('#F8F8F8')
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -43,7 +52,7 @@
 
             canvas:
                 Color:
-                    rgba: hex('#FFFFFF')
+                    rgba: hex('#FDFDFD')
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -58,7 +67,7 @@
 
             Label:
                 text: "welcome\nback"
-                font_name: 'assets/fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                 font_size: ('36sp')
                 halign: "left"
                 line_height: 0.8
@@ -85,8 +94,8 @@
                     size_hint: 1, 0.7
                     TextInput:
                         id: login_email
-                        color: hex('#2D1340')
-                        cursor_color: hex('#2D1340')
+                        color: hex('#333333')
+                        cursor_color: hex('#333333')
                         hint_text: "e-mail"
 
                 BoxLayout:
@@ -96,9 +105,11 @@
                     InputField:
                         TextInput:
                             id: login_password
-                            color: hex('#2D1340')
-                            cursor_color: hex('#2D1340')
+                            color: hex('#333333')
+                            cursor_color: hex('#333333')
                             hint_text: "password"
+                            password: True
+                            password_mask: '●'
 
                     Label:
                         text: "[ref=password]Forgot your password?[/ref]"
@@ -111,12 +122,12 @@
                         pos_hint: {"x": 0.05}
 
                 RoundedButton:
-                    back_color: hex('#2D1340')
+                    back_color: hex('#333333')
                     color: hex('#FDFDFD')
                     border_radius: [32]
                     text: "log in"
                     font_size: ('14sp')
-                    font_name: 'assets/fonts/Anton-Regular.ttf'
+                    font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                     size_hint: 0.28, 0.75
                     pos_hint: {'right': 1}
                     on_press:
@@ -132,7 +143,7 @@
 
             Label:
                 text: "[ref=register]Register[/ref]"
-                font_name: 'assets/fonts/Poppins-Bold.ttf'
+                font_name: 'assets/fonts/Roboto-Bold.ttf'
                 font_size: ('14sp')
                 size_hint: 1, 0.1
                 markup: True

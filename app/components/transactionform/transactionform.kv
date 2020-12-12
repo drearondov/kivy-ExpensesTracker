@@ -4,7 +4,7 @@
 
     transaction_description: transaction_description
     transaction_date: transaction_date
-    transaction_ammount: transaction_ammount
+    transaction_amount: transaction_amount
     transaction_account: transaction_account
 
     orientation: "vertical"
@@ -29,7 +29,7 @@
 
     Label:
         text: 'ADD TRANSACTION'
-        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
         font_size: ('24sp')
         text_size: self.size
         halign: 'left'
@@ -198,10 +198,10 @@
 
             InputField:
                 TextInput:
-                    id: transaction_ammount
+                    id: transaction_amount
                     color: hex('#2D1340')
                     cursor_color: hex('#2D1340')
-                    hint_text: "ammount"
+                    hint_text: "amount"
 
             RoundedButton:
                 back_color: hex('#2D1340')
@@ -209,8 +209,8 @@
                 border_radius: [32]
                 text: "add"
                 font_size: ('14sp')
-                font_name: 'assets/fonts/Anton-Regular.ttf'
+                font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
                 size_hint: (0.45, 1)
                 on_press:
-                    # root.add_transaction(transaction_ammount.text, transaction_date.text, transaction_description.text, transaction_account.text)
+                    # root.add_transaction(transaction_amount.text, transaction_date.text, transaction_description.text, transaction_account.text)
                     root.slide(False)

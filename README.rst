@@ -10,9 +10,10 @@ Simple expenses tracker build using Kivy and Firebase.
 Features
 --------
 
-* Anonymus and e-mail sign up
+* Guest and e-mail sign up
 * Expenses tracking for multiple accounts
-* Expenses summary grouped by month/day/year
+* Expenses summary grouped by month/day/year [Not available yet]
+* 
 
 Installation
 ------------

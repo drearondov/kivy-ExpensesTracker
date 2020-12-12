@@ -24,7 +24,6 @@ class User():
             'email': '',
             'currency': '',
         }
-        self.user_data = None
         self.accounts = None
 
     def create_new_user(self, local_ID, username, first_name, last_name, email, currency="PEN") -> None:

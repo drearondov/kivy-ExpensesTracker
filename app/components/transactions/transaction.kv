@@ -5,10 +5,9 @@
 
     type: type
     description: description
-    ammount: amount
+    amount: amount
 
     orientation: "horizontal"
-    spacing: 16
 
     ImageButton:
         id: type
@@ -20,17 +19,21 @@
         id: description
         text: ""
         halign: 'left'
-        font_name: 'assets/fonts/Poppins-Regular.ttf'
+        valign: 'center'
+        font_name: 'assets/fonts/Roboto-Regular.ttf'
         font_size: ('13sp')
         text_size: self.size
+        size_hint: 1, 1
 
     Label:
         id: amount
         text: ""
         halign: 'right'
-        font_name: 'assets/fonts/Poppins-Regular.ttf'
+        valign: 'center'
+        font_name: 'assets/fonts/Roboto-Regular.ttf'
         font_size: ('13sp')
         text_size: self.size
+        size_hint: 0.4, 1
 
 <DailyTransactions>
 
@@ -42,23 +45,25 @@
 
     canvas:
         Color:
-            rgba: hex("#2E3C42")
+            rgba: hex("#2D1340")
         Line:
-            points:(self.pos[0], self.pos[1], self.size[0], self.pos[1])
+            points:(self.pos[0], self.pos[1], 1.1*self.size[0], self.pos[1])
             width: 1.5
 
     Label:
         id: transaction_date
         text: "Monday 20"
         halign: 'left'
-        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
         font_size: ('14sp')
         text_size: self.size
+        size_hint: 1, 1
 
     Label:
         id: daily_total
         text: "S/. 86.80"
         halign: 'right'
-        font_name: 'assets/fonts/Anton-Regular.ttf'
+        font_name: 'assets/fonts/BalooBhai2-Bold.ttf'
         font_size: ('13sp')
         text_size: self.size
+        size_hint: 0.4, 1
